@@ -11,10 +11,12 @@
                                     <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                 </div>
                                 <form class="user" method="post" action="<?= base_url('register'); ?>">
+                                    <input type="hidden" name="role" value="member">
+                                    <input type="hidden" name="username" value="member">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user <?= form_error('fullname') ? 'is-invalid' : ''; ?>" id="fullname" name="fullname" placeholder="Full Name" value="<?= set_value('fullname'); ?>">
+                                        <input type="text" class="form-control form-control-user <?= form_error('full_name') ? 'is-invalid' : ''; ?>" id="full_name" name="full_name" placeholder="Full Name" value="<?= set_value('full_name'); ?>">
                                         <div class="invalid-feedback">
-                                            <?= form_error('fullname') ?>
+                                            <?= form_error('full_name') ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -25,13 +27,13 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="password" class="form-control form-control-user <?= form_error('password1') ? 'is-invalid' : ''; ?>" id=" password1" name="password1" placeholder="Password" value="<?= set_value('password1'); ?>">
+                                            <input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id=" password" name="password" placeholder="Password" value="<?= set_value('password'); ?>">
                                             <div class="invalid-feedback text-small">
-                                                <?= form_error('password1') ?>
+                                                <?= form_error('password') ?>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+                                            <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Repeat Password">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-user btn-block">

@@ -88,7 +88,7 @@ class Users extends CI_Controller
             $this->is_active = 1;
             $this->db->update('users', $this, array('id_user' => $id));
             $this->session->set_flashdata('message', 'Berhasil diaktifkan');
-        } else {
+        } elseif ($status == 'inactivate') {
             $this->is_active = 0;
             $this->db->update('users', $this, array('id_user' => $id));
             $this->session->set_flashdata('message', 'Berhasil dinonaktifkan');

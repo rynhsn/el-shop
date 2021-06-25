@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Categories</h1>
     <?php if ($this->session->flashdata('message')) : ?>
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success rounded-pill" role="alert">
             <?= $this->session->flashdata('message'); ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

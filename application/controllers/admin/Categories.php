@@ -13,7 +13,15 @@ class Categories extends CI_Controller
     public function index()
     {
         $data['categories'] = $this->category_model->getAll();
+
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
         $this->load->view('admin/category/list', $data);
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 
     public function add()
@@ -25,9 +33,17 @@ class Categories extends CI_Controller
         if ($validation->run()) {
             $category->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
+            redirect('admin/categories/add');
         }
 
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
         $this->load->view('admin/category/new_form');
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 
     public function edit($id = null)
@@ -46,7 +62,14 @@ class Categories extends CI_Controller
         $data['category'] = $category->getById($id);
         if (!$data['category']) show_404();
 
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
         $this->load->view('admin/category/edit_form', $data);
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 
     public function delete($id = null)
@@ -54,6 +77,7 @@ class Categories extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->category_model->delete($id)) {
+            $this->session->set_flashdata('message', 'Berhasil dihapus');
             redirect(site_url('admin/categories'));
         }
     }

@@ -1,17 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Overview extends CI_Controller {
+class Overview extends CI_Controller
+{
 
-    public function index(){
+    public function index()
+    {
 
-        $this->load->view('_partials/head');
-        $this->load->view('_partials/sidebar');
-        $this->load->view('_partials/navbar');
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
         $this->load->view('admin/overview');
-        $this->load->view('_partials/footer');
-        $this->load->view('_partials/scrolltop');
-        $this->load->view('_partials/modal');
-        $this->load->view('_partials/js');
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 }

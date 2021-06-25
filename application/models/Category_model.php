@@ -12,8 +12,8 @@ class Category_model extends CI_Model
     {
         return [
             [
-                'field' => 'category',
-                'label' => 'Category',
+                'field' => 'name',
+                'label' => 'Name',
                 'rules' => 'required'
             ]
         ];
@@ -21,19 +21,22 @@ class Category_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        $this->db->from($this->_table);
+        $this->db->order_by('category', 'ASC');
+        return $this->db->get()->result_array();
     }
 
     public function getById($id)
     {
-        return $this->db->get_where($this->_table, ['id_category' => $id])->row();
+        return $this->db->get_where($this->_table, ['id_category' => $id])->row_array();
     }
 
     public function save()
     {
         $post = $this->input->post();
         // $this->id_category = uniqid();
-        $this->category = $post['category'];
+        $this->category = $post['name'];
+        $this->desc_category = $post['description'];
         return $this->db->insert($this->_table, $this);
     }
 
@@ -41,7 +44,8 @@ class Category_model extends CI_Model
     {
         $post = $this->input->post();
         $this->id_category = $post['id'];
-        $this->category = $post['category'];
+        $this->category = $post['name'];
+        $this->desc_category = $post['description'];
         return $this->db->update($this->_table, $this, array('id_category' => $post['id']));
     }
 

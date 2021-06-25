@@ -8,12 +8,21 @@ class Products extends CI_Controller
     {
         parent::__construct();
         $this->load->model('product_model');
+        $this->load->model('category_model');
     }
 
     public function index()
     {
         $data['products'] = $this->product_model->getAll();
+
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
         $this->load->view('admin/product/list', $data);
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 
     public function add()
@@ -25,9 +34,19 @@ class Products extends CI_Controller
         if ($validation->run()) {
             $product->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
+            redirect('admin/products/add');
         }
 
-        $this->load->view('admin/product/new_form');
+        $data['categories'] = $this->category_model->getAll();
+
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
+        $this->load->view('admin/product/new_form', $data);
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 
     public function edit($id = null)
@@ -38,15 +57,24 @@ class Products extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($product->rules());
 
+
         if ($validation->run()) {
             $product->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
+        $data['categories'] = $this->category_model->getAll();
         $data['product'] = $product->getById($id);
         if (!$data['product']) show_404();
 
+        $this->load->view('admin/_partials/head');
+        $this->load->view('admin/_partials/sidebar');
+        $this->load->view('admin/_partials/navbar');
         $this->load->view('admin/product/edit_form', $data);
+        $this->load->view('admin/_partials/footer');
+        $this->load->view('admin/_partials/scrolltop');
+        $this->load->view('admin/_partials/modal');
+        $this->load->view('admin/_partials/js');
     }
 
     public function delete($id = null)
@@ -54,6 +82,7 @@ class Products extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->product_model->delete($id)) {
+            $this->session->set_flashdata('message', 'Berhasil dihapus');
             redirect(site_url('admin/products'));
         }
     }

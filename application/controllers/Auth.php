@@ -82,6 +82,8 @@ class Auth extends CI_Controller
                         'role' => $user['role']
                     ];
                     $this->session->set_userdata($data);
+                    $this->db->query('UPDATE users SET last_login= now() WHERE id_user="' . $user['id_user'] . '"');
+
                     if ($user['role'] == 'admin') {
                         redirect('admin');
                     } else if ($user['role'] == 'kurir') {

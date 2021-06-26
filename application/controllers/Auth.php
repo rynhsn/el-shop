@@ -12,9 +12,15 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->load->view('auth/_partial/header');
-        $this->load->view('auth/login');
-        $this->load->view('auth/_partial/footer');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        if ($this->form_validation->run()) {
+            $this->_login();
+        } else {
+            $this->load->view('auth/_partial/header');
+            $this->load->view('auth/login');
+            $this->load->view('auth/_partial/footer');
+        }
     }
 
     public function register()
@@ -41,13 +47,43 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run()) {
             $this->user->save();
-            $this->session->set_flashdata('message', 'Congratulation! your account has been created.');
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-success rounded-pill" role="alert">
+                    Congratulation! your account has been created.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>'
+            );
             redirect('login');
         } else {
             // echo 'salah';
             $this->load->view('auth/_partial/header');
             $this->load->view('auth/register');
             $this->load->view('auth/_partial/footer');
+        }
+    }
+
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        $user = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        if ($user) {
+        } else {
+            $this->session->set_flashdata(
+                'message',
+                '<div class="alert alert-danger rounded-pill" role="alert">
+                    This email is not registered!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>'
+            );
+            redirect('login');
         }
     }
 }

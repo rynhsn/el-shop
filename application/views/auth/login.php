@@ -13,21 +13,20 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
-                                    <?php if ($this->session->flashdata('message')) : ?>
-                                        <div class="alert alert-success rounded-pill" role="alert">
-                                            <?= $this->session->flashdata('message'); ?>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    <?php endif; ?>
                                 </div>
-                                <form class="user">
+                                <?= $this->session->flashdata('message'); ?>
+                                <form class="user" method="post" action="<?= base_url('login'); ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Enter Username...">
+                                        <input type="text" class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Enter Email Address..." value="<?= set_value('email'); ?>">
+                                        <div class="invalid-feedback text-small">
+                                            <?= form_error('email') ?>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id=" password" name="password" placeholder="Password">
+                                        <div class="invalid-feedback text-small">
+                                            <?= form_error('password') ?>
+                                        </div>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-user btn-block">
                                         Login

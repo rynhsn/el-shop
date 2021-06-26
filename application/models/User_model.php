@@ -77,6 +77,7 @@ class User_model extends CI_Model
         $this->image;
         $this->password = password_hash($this->role, PASSWORD_DEFAULT);
         $this->is_active = 1;
+        $this->date_created = now();
         return $this->db->insert($this->_table, $this);
     }
 

@@ -53,12 +53,14 @@
                                 </td>
                                 <td><?= $product['desc_product']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/products/edit/') . $product['id_product']; ?>" class="btn btn-info btn-circle btn-sm">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-circle btn-sm" onclick="deleteConfirm('<?= base_url('admin/products/delete/' . $product['id_product']); ?>')">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="<?= base_url('admin/products/edit/') . $product['id_product']; ?>" class="btn btn-info btn-circle btn-sm">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle btn-sm" onclick="deleteConfirm('<?= base_url('admin/products/delete/' . $product['id_product']); ?>')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

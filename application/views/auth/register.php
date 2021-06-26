@@ -21,14 +21,14 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Email Address" value="<?= set_value('email'); ?>">
-                                        <div class="invalid-feedback text-small">
+                                        <div class="invalid-feedback">
                                             <?= form_error('email') ?>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id=" password" name="password" placeholder="Password" value="<?= set_value('password'); ?>">
-                                            <div class="invalid-feedback text-small">
+                                            <div class="invalid-feedback">
                                                 <?= form_error('password') ?>
                                             </div>
                                         </div>

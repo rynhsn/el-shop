@@ -39,12 +39,14 @@
                                 <td><?= $category['category']; ?></td>
                                 <td><?= $category['desc_category']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/categories/edit/') . $category['id_category']; ?>" class="btn btn-info btn-circle btn-sm">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-circle btn-sm" onclick="deleteConfirm('<?= base_url('admin/categories/delete/' . $category['id_category']); ?>')">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="<?= base_url('admin/categories/edit/') . $category['id_category']; ?>" class="btn btn-info btn-circle btn-sm">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle btn-sm" onclick="deleteConfirm('<?= base_url('admin/categories/delete/' . $category['id_category']); ?>')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

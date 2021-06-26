@@ -18,13 +18,13 @@
                                 <form class="user" method="post" action="<?= base_url('login'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Enter Email Address..." value="<?= set_value('email'); ?>">
-                                        <div class="invalid-feedback text-small">
+                                        <div class="invalid-feedback">
                                             <?= form_error('email') ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id=" password" name="password" placeholder="Password">
-                                        <div class="invalid-feedback text-small">
+                                        <div class="invalid-feedback">
                                             <?= form_error('password') ?>
                                         </div>
                                     </div>

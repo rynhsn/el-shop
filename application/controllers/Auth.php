@@ -12,6 +12,8 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        if ($this->session->userdata('email')) redirect($this->session->userdata('role'));
+
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run()) {
@@ -73,6 +75,34 @@ class Auth extends CI_Controller
         $user = $this->db->get_where('users', ['email' => $email])->row_array();
 
         if ($user) {
+            if ($user['is_active'] == 1) {
+                if (password_verify($password, $user['password'])) {
+                    $data = [
+                        'email' => $user['email'],
+                        'role' => $user['role']
+                    ];
+                    $this->session->set_userdata($data);
+                    if ($user['role'] == 'admin') {
+                        redirect('admin');
+                    } else if ($user['role'] == 'kurir') {
+                        redirect('kurir');
+                    } else {
+                        redirect('profile');
+                    }
+                } else {
+                    echo 'salah';
+                }
+            } else {
+                $this->session->set_flashdata(
+                    'message',
+                    '<div class="alert alert-danger rounded-pill" role="alert">
+                    This email has not been activated!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>'
+                );
+            }
         } else {
             $this->session->set_flashdata(
                 'message',
@@ -85,5 +115,28 @@ class Auth extends CI_Controller
             );
             redirect('login');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role');;
+        $this->session->set_flashdata(
+            'message',
+            '<div class="alert alert-danger rounded-pill" role="alert">
+                You have been logged out!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>'
+        );
+        redirect('login');
+    }
+
+    public function blocked()
+    {
+        $data['role'] = $this->session->userdata('role');
+        $this->load->view('auth/blocked', $data);
     }
 }

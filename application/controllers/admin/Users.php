@@ -8,20 +8,29 @@ class Users extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model');
+        is_logged_in();
+    }
+
+    private function _view($page, $data)
+    {
+        $this->load->view('admin/_partials/head', $data);
+        $this->load->view('admin/_partials/sidebar', $data);
+        $this->load->view('admin/_partials/navbar', $data);
+        $this->load->view('admin/user/' . $page, $data);
+        $this->load->view('admin/_partials/footer', $data);
+        $this->load->view('admin/_partials/scrolltop', $data);
+        $this->load->view('admin/_partials/modal', $data);
+        $this->load->view('admin/_partials/js', $data);
     }
 
     public function index()
     {
         $data['users'] = $this->user_model->getAll();
 
-        $this->load->view('admin/_partials/head');
-        $this->load->view('admin/_partials/sidebar');
-        $this->load->view('admin/_partials/navbar');
-        $this->load->view('admin/user/list', $data);
-        $this->load->view('admin/_partials/footer');
-        $this->load->view('admin/_partials/scrolltop');
-        $this->load->view('admin/_partials/modal', $data);
-        $this->load->view('admin/_partials/js');
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('list', $data);
     }
 
     public function add()
@@ -36,14 +45,10 @@ class Users extends CI_Controller
             redirect('admin/users/add');
         }
 
-        $this->load->view('admin/_partials/head');
-        $this->load->view('admin/_partials/sidebar');
-        $this->load->view('admin/_partials/navbar');
-        $this->load->view('admin/user/new_form');
-        $this->load->view('admin/_partials/footer');
-        $this->load->view('admin/_partials/scrolltop');
-        $this->load->view('admin/_partials/modal');
-        $this->load->view('admin/_partials/js');
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('new_form', $data);
     }
 
     public function edit($id = null)
@@ -62,14 +67,11 @@ class Users extends CI_Controller
         $data['user'] = $user->getById($id);
         if (!$data['user']) show_404();
 
-        $this->load->view('admin/_partials/head');
-        $this->load->view('admin/_partials/sidebar');
-        $this->load->view('admin/_partials/navbar');
-        $this->load->view('admin/user/edit_form', $data);
-        $this->load->view('admin/_partials/footer');
-        $this->load->view('admin/_partials/scrolltop');
-        $this->load->view('admin/_partials/modal');
-        $this->load->view('admin/_partials/js');
+
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('edit_form', $data);
     }
 
     public function delete($id = null)

@@ -8,20 +8,29 @@ class Categories extends CI_Controller
     {
         parent::__construct();
         $this->load->model('category_model');
+        is_logged_in();
+    }
+
+    private function _view($page, $data)
+    {
+        $this->load->view('admin/_partials/head', $data);
+        $this->load->view('admin/_partials/sidebar', $data);
+        $this->load->view('admin/_partials/navbar', $data);
+        $this->load->view('admin/category/' . $page, $data);
+        $this->load->view('admin/_partials/footer', $data);
+        $this->load->view('admin/_partials/scrolltop', $data);
+        $this->load->view('admin/_partials/modal', $data);
+        $this->load->view('admin/_partials/js', $data);
     }
 
     public function index()
     {
         $data['categories'] = $this->category_model->getAll();
 
-        $this->load->view('admin/_partials/head');
-        $this->load->view('admin/_partials/sidebar');
-        $this->load->view('admin/_partials/navbar');
-        $this->load->view('admin/category/list', $data);
-        $this->load->view('admin/_partials/footer');
-        $this->load->view('admin/_partials/scrolltop');
-        $this->load->view('admin/_partials/modal');
-        $this->load->view('admin/_partials/js');
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('list', $data);
     }
 
     public function add()
@@ -36,14 +45,10 @@ class Categories extends CI_Controller
             redirect('admin/categories/add');
         }
 
-        $this->load->view('admin/_partials/head');
-        $this->load->view('admin/_partials/sidebar');
-        $this->load->view('admin/_partials/navbar');
-        $this->load->view('admin/category/new_form');
-        $this->load->view('admin/_partials/footer');
-        $this->load->view('admin/_partials/scrolltop');
-        $this->load->view('admin/_partials/modal');
-        $this->load->view('admin/_partials/js');
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('new_form', $data);
     }
 
     public function edit($id = null)
@@ -62,14 +67,11 @@ class Categories extends CI_Controller
         $data['category'] = $category->getById($id);
         if (!$data['category']) show_404();
 
-        $this->load->view('admin/_partials/head');
-        $this->load->view('admin/_partials/sidebar');
-        $this->load->view('admin/_partials/navbar');
-        $this->load->view('admin/category/edit_form', $data);
-        $this->load->view('admin/_partials/footer');
-        $this->load->view('admin/_partials/scrolltop');
-        $this->load->view('admin/_partials/modal');
-        $this->load->view('admin/_partials/js');
+
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('edit_form', $data);
     }
 
     public function delete($id = null)

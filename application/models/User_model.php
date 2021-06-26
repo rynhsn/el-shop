@@ -10,7 +10,7 @@ class User_model extends CI_Model
     public $username;
     public $email;
     public $password;
-    public $image = 'default.jpg';
+    public $image = 'user.jpg';
     public $role;
     public $is_active;
 

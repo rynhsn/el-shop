@@ -22,14 +22,16 @@
                     <thead>
                         <tr>
                             <th>Category</th>
-                            <th>Description</th>
+                            <th>Slug</th>
+                            <th>Urutan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Category</th>
-                            <th>Description</th>
+                            <th>Slug</th>
+                            <th>Urutan</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -37,7 +39,8 @@
                         <?php foreach ($categories as $category) : ?>
                             <tr>
                                 <td><?= $category['category']; ?></td>
-                                <td><?= $category['desc_category']; ?></td>
+                                <td><?= $category['category_slug']; ?></td>
+                                <td><?= $category['sort']; ?></td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <a href="<?= base_url('admin/categories/edit/') . $category['id_category']; ?>" class="btn btn-info btn-circle btn-sm">

@@ -27,9 +27,9 @@ class Home extends CI_Controller
 
     public function _view($page, $data)
     {
-        $this->load->view('customer/_partials/header', $data);
-        $this->load->view('customer/_partials/navbar', $data);
-        $this->load->view('customer/' . $page, $data);
-        $this->load->view('customer/_partials/footer', $data);
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/navbar', $data);
+        $this->load->view($page, $data);
+        $this->load->view('_partials/footer', $data);
     }
 }

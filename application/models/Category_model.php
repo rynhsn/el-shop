@@ -7,6 +7,8 @@ class Category_model extends CI_Model
 
     public $id_category;
     public $category;
+    public $category_slug;
+    public $sort;
 
     public function rules()
     {
@@ -14,7 +16,12 @@ class Category_model extends CI_Model
             [
                 'field' => 'name',
                 'label' => 'Name',
-                'rules' => 'required'
+                'rules' => 'trim|required'
+            ],
+            [
+                'field' => 'sort',
+                'label' => 'Sort',
+                'rules' => 'trim|required'
             ]
         ];
     }
@@ -36,7 +43,8 @@ class Category_model extends CI_Model
         $post = $this->input->post();
         // $this->id_category = uniqid();
         $this->category = $post['name'];
-        $this->desc_category = $post['description'];
+        $this->category_slug = url_title($post['name'], 'dash', TRUE);
+        $this->sort = $post['sort'];
         return $this->db->insert($this->_table, $this);
     }
 
@@ -45,7 +53,8 @@ class Category_model extends CI_Model
         $post = $this->input->post();
         $this->id_category = $post['id'];
         $this->category = $post['name'];
-        $this->desc_category = $post['description'];
+        $this->category_slug = url_title($post['name'], 'dash', TRUE);
+        $this->sort = $post['sort'];
         return $this->db->update($this->_table, $this, array('id_category' => $post['id']));
     }
 

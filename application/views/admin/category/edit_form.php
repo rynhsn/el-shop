@@ -26,17 +26,17 @@
 
                 <div class="form-group">
                     <label for="name">Name*</label>
-                    <input class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>" type="text" name="name" placeholder="Product name" value="<?= $category['category']; ?>" />
+                    <input class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>" type="text" name="name" placeholder="Category name" value="<?= $category['category']; ?>" />
                     <div class="invalid-feedback">
                         <?= form_error('name') ?>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description*</label>
-                    <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" name="description" placeholder="Product description..."><?= $category['desc_category']; ?></textarea>
+                    <label for="sort">Sort*</label>
+                    <input class="form-control <?= form_error('sort') ? 'is-invalid' : '' ?>" type="text" name="sort" placeholder="Sort" value="<?= $category['sort']; ?>" />
                     <div class="invalid-feedback">
-                        <?= form_error('description') ?>
+                        <?= form_error('sort') ?>
                     </div>
                 </div>
 

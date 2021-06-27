@@ -47,7 +47,6 @@ class Categories extends CI_Controller
 
         $email = $this->session->userdata('email');
         $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
-
         $this->_view('new_form', $data);
     }
 

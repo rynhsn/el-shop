@@ -29,8 +29,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" name="description" placeholder="Category description..."><?= set_value('description'); ?></textarea>
+                    <label for="sort">Sort</label>
+                    <input class="form-control <?= form_error('sort') ? 'is-invalid' : '' ?>" type="text" name="sort" placeholder="Sort" value="<?= set_value('sort'); ?>" />
+                    <div class="invalid-feedback">
+                        <?= form_error('sort') ?>
+                    </div>
                 </div>
 
                 <input class="btn btn-success rounded-pill" type="submit" name="btn" value="Save" />

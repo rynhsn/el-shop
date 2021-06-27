@@ -13,7 +13,11 @@
                 </div>
             </div>
             <div class="ht-right">
-                <a href="<?= base_url('login'); ?>" class="login-panel"><i class="fa fa-user"></i>Masuk</a>
+                <?php if ($this->session->userdata('email')) : ?>
+                    <a href="<?= base_url('profile'); ?>" class="login-panel"><i class="fa fa-user"></i><?= $user['full_name']; ?></a>
+                <?php else : ?>
+                    <a href="<?= base_url('login'); ?>" class="login-panel"><i class="fa fa-user"></i>Masuk</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

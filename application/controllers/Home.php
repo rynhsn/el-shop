@@ -8,10 +8,14 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('category_model', 'category');
         $this->load->model('product_model', 'product');
+        $this->load->model('user_model', 'user');
     }
 
     public function index()
     {
+        if ($this->session->userdata('email')) {
+            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        }
         $data['categories'] = $this->category->getAll();
 
         $this->_view('index', $data);

@@ -101,27 +101,13 @@
     </div>
     <div class="nav-item">
         <div class="container">
-            <div class="nav-depart">
-                <div class="depart-btn">
-                    <i class="ti-menu"></i>
-                    <span>Kategori</span>
-                    <ul class="depart-hover">
-                        <?php foreach ($categories as $category) : ?>
-                            <li class="active">
-                                <a href="<?= base_url(''); ?>">
-                                    <?= $category['category']; ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li <?= $this->uri->segment(1) == '' ? 'class="active"' : ''; ?>><a href="<?= base_url(); ?>">Beranda</a></li>
-                    <li <?= $this->uri->segment(1) == 'produk' ? 'class="active"' : ''; ?>><a href="<?= base_url('produk'); ?>">Produk</a></li>
-                    <li <?= $this->uri->segment(1) == 'blog' ? 'class="active"' : ''; ?>><a href="<?= base_url('blog'); ?>">Blog</a></li>
-                    <li <?= $this->uri->segment(1) == 'kontak' ? 'class="active"' : ''; ?>><a href="<?= base_url('kontak'); ?>">Hubungi kami</a></li>
+                    <li <?= $this->uri->segment(1) == '' ? 'class="active"' : ''; ?>><a href="<?= base_url(); ?>">Home</a></li>
+                    <li <?= $this->uri->segment(1) == 'produk' ? 'class="active"' : ''; ?>><a href="<?= base_url('products'); ?>">Product</a></li>
+                    <li <?= $this->uri->segment(1) == 'blog' ? 'class="active"' : ''; ?>><a href="<?= base_url('blogs'); ?>">Blog</a></li>
+                    <li <?= $this->uri->segment(1) == 'blog' ? 'class="active"' : ''; ?>><a href="<?= base_url('about'); ?>">About us</a></li>
+                    <li <?= $this->uri->segment(1) == 'kontak' ? 'class="active"' : ''; ?>><a href="<?= base_url('contact'); ?>">Contact</a></li>
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>

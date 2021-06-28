@@ -59,7 +59,7 @@
         loop: true,
         margin: 25,
         nav: true,
-        items: 4,
+        items: 5,
         dots: true,
         navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
         smartSpeed: 1200,
@@ -76,7 +76,7 @@
                 items: 2,
             },
             1200: {
-                items: 3,
+                items: 5,
             }
         }
     });
@@ -112,7 +112,7 @@
         loop: false,
         margin: 10,
         nav: true,
-        items: 3,
+        items: 5,
         dots: false,
         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
         smartSpeed: 1200,

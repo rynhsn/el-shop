@@ -2,21 +2,21 @@
 <footer class="footer-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-6">
                 <div class="footer-left">
                     <div class="footer-logo">
                         <a href="#"><img src="img/footer-logo.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Address: 60-49 Road 11378 New York</li>
-                        <li>Phone: +65 11.188.888</li>
-                        <li>Email: hello.colorlib@gmail.com</li>
+                        <li>Address: </li>
+                        <li class="mb-2"><?= $site['address']; ?></li>
+                        <li>Phone: </li>
+                        <li class="mb-2"><?= $site['phone']; ?></li>
+                        <li>Email: </li>
+                        <li class="mb-2"><?= $site['email']; ?></li>
                     </ul>
                     <div class="footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="https://www.linkedin.com/company/pt-nusaraya-putramandiri/"><i class="fa fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>

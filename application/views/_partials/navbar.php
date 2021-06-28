@@ -5,11 +5,11 @@
             <div class="ht-left">
                 <div class="mail-service">
                     <i class=" fa fa-envelope"></i>
-                    admin@gmail.com
+                    <?= $site['email']; ?>
                 </div>
                 <div class="phone-service">
                     <i class=" fa fa-phone"></i>
-                    +62 812 3456 7890
+                    <?= $site['phone']; ?>
                 </div>
             </div>
             <div class="ht-right">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-7 col-md-7">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">Kategori</button>
+                        <button type="button" class="category-btn">All Categories</button>
                         <div class="input-group">
                             <input type="text" placeholder="What do you need?">
                             <button type="button"><i class="ti-search"></i></button>
@@ -104,10 +104,10 @@
             <nav class="nav-menu mobile-menu">
                 <ul>
                     <li <?= $this->uri->segment(1) == '' ? 'class="active"' : ''; ?>><a href="<?= base_url(); ?>">Home</a></li>
-                    <li <?= $this->uri->segment(1) == 'produk' ? 'class="active"' : ''; ?>><a href="<?= base_url('products'); ?>">Product</a></li>
-                    <li <?= $this->uri->segment(1) == 'blog' ? 'class="active"' : ''; ?>><a href="<?= base_url('blogs'); ?>">Blog</a></li>
-                    <li <?= $this->uri->segment(1) == 'blog' ? 'class="active"' : ''; ?>><a href="<?= base_url('about'); ?>">About us</a></li>
-                    <li <?= $this->uri->segment(1) == 'kontak' ? 'class="active"' : ''; ?>><a href="<?= base_url('contact'); ?>">Contact</a></li>
+                    <li <?= $this->uri->segment(1) == 'products' ? 'class="active"' : ''; ?>><a href="<?= base_url('products'); ?>">Product</a></li>
+                    <li <?= $this->uri->segment(1) == 'blogs' ? 'class="active"' : ''; ?>><a href="<?= base_url('blogs'); ?>">Blog</a></li>
+                    <li <?= $this->uri->segment(1) == 'about' ? 'class="active"' : ''; ?>><a href="<?= base_url('about'); ?>">About us</a></li>
+                    <li <?= $this->uri->segment(1) == 'contact' ? 'class="active"' : ''; ?>><a href="<?= base_url('contact'); ?>">Contact</a></li>
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>

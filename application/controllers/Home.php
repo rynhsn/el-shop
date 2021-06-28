@@ -79,6 +79,7 @@ class Home extends CI_Controller
 
     public function _view($page, $data)
     {
+        $data['site'] = $this->config_model->get();
         $this->load->view('_partials/header', $data);
         $this->load->view('_partials/navbar', $data);
         $this->load->view($page, $data);

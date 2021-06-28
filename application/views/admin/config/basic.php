@@ -103,7 +103,7 @@
                 <div class="form-group row">
                     <label for="description" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" type="text" name="description" id="editor"><?= $config['description']; ?></textarea>
+                        <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" type="text" name="description" id="description"><?= $config['description']; ?></textarea>
                         <div class="invalid-feedback">
                             <?= form_error('description') ?>
                         </div>

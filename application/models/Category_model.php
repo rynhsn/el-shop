@@ -29,7 +29,7 @@ class Category_model extends CI_Model
     public function getAll()
     {
         $this->db->from($this->_table);
-        $this->db->order_by('sort', 'desc');
+        $this->db->order_by('sort', 'asc');
         return $this->db->get()->result_array();
     }
 

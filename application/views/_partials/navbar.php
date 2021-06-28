@@ -27,13 +27,18 @@
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                         <a href="./index.html">
-                            <img src="<?= base_url('assets'); ?>/img/logo.png" alt="">
+                            <img src="<?= base_url('assets/img/' . $site['logo']); ?>" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-7">
+                <div class="col-lg-7 col-md-8">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">All Categories</button>
+                        <select class="category-btn" name="category" id="category" style="width:500px;">
+                            <option value='all'>All Categories</option>
+                            <?php foreach ($categories as $category) : ?>
+                                <option value='<?= $category['category']; ?>'><?= $category['category']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <div class="input-group">
                             <input type="text" placeholder="What do you need?">
                             <button type="button"><i class="ti-search"></i></button>
@@ -65,9 +70,6 @@
                                                         <h6>Kabino Bedside Table</h6>
                                                     </div>
                                                 </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="si-pic"><img src="<?= base_url('assets'); ?>/img/select-product-2.jpg" alt=""></td>
@@ -76,9 +78,6 @@
                                                         <p>$60.00 x 1</p>
                                                         <h6>Kabino Bedside Table</h6>
                                                     </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
                                                 </td>
                                             </tr>
                                         </tbody>

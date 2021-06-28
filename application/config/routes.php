@@ -51,6 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['products'] = 'home/shop';
+$route['product-detail'] = 'home/shop_detail';
 $route['blogs'] = 'home/blogs';
 $route['about'] = 'home/about';
 $route['contact'] = 'home/contact';

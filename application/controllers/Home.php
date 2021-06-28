@@ -33,6 +33,16 @@ class Home extends CI_Controller
 
         $this->_view('shop', $data);
     }
+    public function shop_detail()
+    {
+        $data['categories'] = $this->category->getAll();
+        $data['products'] = $this->product->getAll();
+
+        $email = $this->session->userdata('email');
+        $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('detail-shop', $data);
+    }
 
     public function blogs()
     {

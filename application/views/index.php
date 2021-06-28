@@ -41,12 +41,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-                <div class="product-large set-bg" data-setbg="<?= base_url('assets/'); ?>img/products/women-large.jpg">
-                    <h2>Women’s</h2>
-                    <a href="#">Discover More</a>
-                </div>
             </div>
-            <div class="col-lg-8 offset-lg-1">
+            <div class=>
                 <div class="filter-control">
                     <ul>
                         <li class="active">Clothings</li>

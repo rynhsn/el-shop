@@ -13,10 +13,12 @@ class Home extends CI_Controller
 
     public function index()
     {
+        $data['categories'] = $this->category->getAll();
+        $data['products'] = $this->product->getAll();
+
         if ($this->session->userdata('email')) {
             $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         }
-        $data['categories'] = $this->category->getAll();
 
         $this->_view('index', $data);
     }

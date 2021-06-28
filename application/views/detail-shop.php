@@ -65,25 +65,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
                                         sit amet, consectetur adipisicing elit, sed do mod tempor</p>
                                     <h4>$495.00 <span>629.99</span></h4>
-                                </div>
-                                <div class="pd-size-choose">
-                                    <div class="sc-item">
-                                        <input type="radio" id="sm-size">
-                                        <label for="sm-size">s</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="md-size">
-                                        <label for="md-size">m</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="lg-size">
-                                        <label for="lg-size">l</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="xl-size">
-                                        <label for="xl-size">xs</label>
-                                    </div>
-                                </div>
+                                </div>  
                                 <div class="quantity">
                                     <div class="pro-qty">
                                         <input type="text" value="1">
@@ -113,9 +95,6 @@
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
                                 </li>
                             </ul>
                         </div>

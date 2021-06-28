@@ -54,6 +54,16 @@ class Home extends CI_Controller
 
         $this->_view('blogs', $data);
     }
+    public function blog_detail()
+    {
+        $data['categories'] = $this->category->getAll();
+        $data['products'] = $this->product->getAll();
+
+        $email = $this->session->userdata('email');
+        $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('blog-detail', $data);
+    }
 
     public function about()
     {

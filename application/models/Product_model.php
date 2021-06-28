@@ -18,21 +18,27 @@ class Product_model extends CI_Model
     {
         return [
             [
+                'field' => 'id_product',
+                'label' => 'Product code',
+                'rules' => 'trim|required|is_unique[products.id_product]'
+            ],
+
+            [
                 'field' => 'name',
                 'label' => 'Name',
-                'rules' => 'required'
+                'rules' => 'trim|required'
             ],
 
             [
                 'field' => 'price',
                 'label' => 'Price',
-                'rules' => 'required|numeric'
+                'rules' => 'trim|required|numeric'
             ],
 
             [
                 'field' => 'stock',
                 'label' => 'Stock',
-                'rules' => 'required|numeric'
+                'rules' => 'trim|required|numeric'
             ],
 
             [
@@ -45,9 +51,10 @@ class Product_model extends CI_Model
 
     public function getAll()
     {
-        $this->db->select('*');
+        $this->db->select('products.*, categories.category, categories.category_slug');
         $this->db->from($this->_table);
         $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category');
+        // $this->db->order_by('id_product', 'desc');
         return $this->db->get()->result_array();
     }
 
@@ -59,22 +66,30 @@ class Product_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->id_product = uniqid();
+        $this->id_product = $post['id_product'];
         $this->category_id = $post['category'];
         $this->name = $post['name'];
+        $this->product_slug = url_title($post['name'], 'dash', TRUE);
         $this->price = $post['price'];
         $this->stock = $post['stock'];
+        $this->weight = $post['weight'];
+        $this->size = $post['size'];
+        $this->is_active = $post['is_active'];
+        $this->keywords = $post['keywords'];
         $this->image = $this->_uploadImage();
         $this->desc_product = $post['description'];
+        $this->date_created = date('Y-m-d H:i:s');
+        $this->_thumbnail();
         return $this->db->insert($this->_table, $this);
     }
 
     public function update()
     {
         $post = $this->input->post();
-        $this->id_product = $post['id'];
+        $this->id_product = $post['id_product'];
         $this->name = $post['name'];
         $this->category_id = $post['category'];
+        $this->product_slug = url_title($post['name'], 'dash', TRUE);
         $this->price = $post['price'];
         $this->stock = $post['stock'];
         if (!empty($_FILES['image']['name'])) {
@@ -83,7 +98,7 @@ class Product_model extends CI_Model
             $this->image = $post['old_image'];
         }
         $this->desc_product = $post['description'];
-        return $this->db->update($this->_table, $this, array('id_product' => $post['id']));
+        return $this->db->update($this->_table, $this, array('id_product' => $post['id_product']));
     }
 
     public function delete($id)
@@ -110,6 +125,26 @@ class Product_model extends CI_Model
         }
 
         return 'product.jpg';
+    }
+
+    private function _thumbnail()
+    {
+        $thumbs = array('upload_thumb' => $this->upload->data());
+
+
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = './assets/img/products/' . $thumbs['upload_thumbs']['file_name'];
+
+        // lokasi thumbnail
+        $config['new_image'] = './assets/img/products/thumbs/';
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 25;
+        $config['height']       = 25;
+
+        $this->load->library('image_lib', $config);
+
+        $this->image_lib->resize();
     }
 
     private function _deleteImage($id)

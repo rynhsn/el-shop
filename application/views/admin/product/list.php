@@ -21,37 +21,34 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Category</th>
+                            <th>Image</th>
                             <th>Name</th>
+                            <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Image</th>
-                            <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Category</th>
+                            <th>Image</th>
                             <th>Name</th>
+                            <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Image</th>
-                            <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <?php foreach ($products as $product) : ?>
                             <tr>
-                                <td><?= $product['category']; ?></td>
+                                <td>
+                                    <img src="<?php echo base_url('assets/img/products/' . $product['image']) ?>" height="64px" />
+                                </td>
                                 <td><?= $product['name']; ?></td>
+                                <td><?= $product['category']; ?></td>
                                 <td><?= "Rp " . number_format($product['price'], 0, ',', '.'); ?></td>
                                 <td><?= $product['stock']; ?></td>
-                                <td>
-                                    <img src="<?php echo base_url('assets/img/products/' . $product['image']) ?>" width="64" />
-                                </td>
-                                <td><?= $product['desc_product']; ?></td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <a href="<?= base_url('admin/products/edit/') . $product['id_product']; ?>" class="btn btn-info btn-circle btn-sm">

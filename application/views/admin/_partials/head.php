@@ -20,6 +20,9 @@
     <!-- Custom styles for this page -->
     <link href="<?= base_url('assets'); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- Ckeditor5 -->
+    <script src="<?= base_url('assets'); ?>/vendor/ckeditor5/ckeditor.js"></script>
+
 </head>
 
 <body id="page-top">

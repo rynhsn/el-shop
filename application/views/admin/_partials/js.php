@@ -23,6 +23,12 @@
         $('#btn-delete').attr('href', url);
         $('#deleteModal').modal();
     }
+
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>
 
 </body>

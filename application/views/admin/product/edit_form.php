@@ -21,8 +21,23 @@
             <form action="" method="post" enctype="multipart/form-data">
                 <!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
 							oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
+                <input type="hidden" name="id_product" value="<?= $product['id_product']; ?>" />
 
-                <input type="hidden" name="id" value="<?= $product['id_product'] ?>" />
+                <div class="form-group">
+                    <label for="id_product">Product code*</label>
+                    <input class="form-control <?= form_error('id_product') ? 'is-invalid' : '' ?>" type="text" name="id_product" id="id_product" placeholder="Product code" value="<?= $product['id_product']; ?>" disabled />
+                    <div class="invalid-feedback">
+                        <?= form_error('id_product') ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>" type="text" id="name" name="name" placeholder="Product name" value="<?= $product['name']; ?>" />
+                    <div class="invalid-feedback">
+                        <?= form_error('name') ?>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="category">Category*</label>
@@ -33,14 +48,6 @@
                     </select>
                     <div class="invalid-feedback">
                         <?= form_error('category') ?>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="name">Name*</label>
-                    <input class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>" type="text" name="name" placeholder="Product name" value="<?= $product['name']; ?>" />
-                    <div class="invalid-feedback">
-                        <?= form_error('name') ?>
                     </div>
                 </div>
 

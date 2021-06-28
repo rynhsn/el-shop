@@ -23,15 +23,19 @@
             <i class="fas fa-fw fa-user-cog"></i>
             <span>Users</span></a>
     </li>
-    <li class="nav-item <?= $this->uri->segment(2) == 'categories' ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('admin/categories'); ?>">
-            <i class="fas fa-fw fa-box"></i>
-            <span>Categories</span></a>
-    </li>
-    <li class="nav-item <?= $this->uri->segment(2) == 'products' ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('admin/products'); ?>">
+
+    <li class="nav-item <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'active' : ''; ?>">
+        <a class="nav-link <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? '' : 'collapsed'; ?>" href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="<?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'true' : 'false'; ?>" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-boxes"></i>
-            <span>Products</span></a>
+            <span>Products</span>
+        </a>
+        <div id="collapseUtilities" class="collapse <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'show' : ''; ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Products</h6>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'products' ? 'active' : ''; ?>" href="<?= base_url('admin/products'); ?>">Product</a>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'categories' ? 'active' : ''; ?>" href="<?= base_url('admin/categories'); ?>">Product Category</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

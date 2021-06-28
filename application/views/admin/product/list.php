@@ -26,6 +26,7 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -43,16 +45,20 @@
                         <?php foreach ($products as $product) : ?>
                             <tr>
                                 <td>
-                                    <img src="<?php echo base_url('assets/img/products/' . $product['image']) ?>" height="64px" />
+                                    <img src="<?php echo base_url('assets/img/products/thumbs/' . $product['image']) ?>" width="64" />
                                 </td>
                                 <td><?= $product['name']; ?></td>
                                 <td><?= $product['category']; ?></td>
                                 <td><?= "Rp " . number_format($product['price'], 0, ',', '.'); ?></td>
                                 <td><?= $product['stock']; ?></td>
+                                <td><?= $product['is_active'] == 1 ? 'Publish' : 'Draft'; ?></td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <a href="<?= base_url('admin/products/edit/') . $product['id_product']; ?>" class="btn btn-info btn-circle btn-sm">
                                             <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a href="<?= base_url('admin/products/images/') . $product['id_product']; ?>" class="btn btn-warning btn-circle btn-sm text-sm">
+                                            <i class="fas fa-image"></i> <?= $product['image_total']; ?>
                                         </a>
                                         <a class="btn btn-danger btn-circle btn-sm" onclick="deleteConfirm('<?= base_url('admin/products/delete/' . $product['id_product']); ?>')">
                                             <i class="fas fa-trash"></i>

@@ -92,7 +92,16 @@ class Auth extends CI_Controller
                         redirect('profile');
                     }
                 } else {
-                    echo 'salah';
+                    $this->session->set_flashdata(
+                        'message',
+                        '<div class="alert alert-danger rounded-pill" role="alert">
+                        Wrong password!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>'
+                    );
+                    redirect('login');
                 }
             } else {
                 $this->session->set_flashdata(
@@ -104,6 +113,7 @@ class Auth extends CI_Controller
                     </button>
                 </div>'
                 );
+                redirect('login');
             }
         } else {
             $this->session->set_flashdata(

@@ -5,6 +5,7 @@ class Product_model extends CI_Model
 {
     private $_table = 'products';
     private $_join = 'categories';
+    private $_join1 = 'product_images';
 
     public $id_product;
     public $category_id;
@@ -17,12 +18,6 @@ class Product_model extends CI_Model
     public function rules()
     {
         return [
-            [
-                'field' => 'id_product',
-                'label' => 'Product code',
-                'rules' => 'trim|required|is_unique[products.id_product]'
-            ],
-
             [
                 'field' => 'name',
                 'label' => 'Name',
@@ -51,10 +46,12 @@ class Product_model extends CI_Model
 
     public function getAll()
     {
-        $this->db->select('products.*, categories.category, categories.category_slug');
+        $this->db->select('products.*, categories.category, categories.category_slug, COUNT(product_images.id_image) AS image_total');
         $this->db->from($this->_table);
-        $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category');
+        $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
+        $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
         // $this->db->order_by('id_product', 'desc');
+        $this->db->group_by('id_product');
         return $this->db->get()->result_array();
     }
 
@@ -77,9 +74,9 @@ class Product_model extends CI_Model
         $this->is_active = $post['is_active'];
         $this->keywords = $post['keywords'];
         $this->image = $this->_uploadImage();
+        $this->_thumbnail();
         $this->desc_product = $post['description'];
         $this->date_created = date('Y-m-d H:i:s');
-        $this->_thumbnail();
         return $this->db->insert($this->_table, $this);
     }
 
@@ -92,8 +89,13 @@ class Product_model extends CI_Model
         $this->product_slug = url_title($post['name'], 'dash', TRUE);
         $this->price = $post['price'];
         $this->stock = $post['stock'];
+        $this->weight = $post['weight'];
+        $this->size = $post['size'];
+        $this->is_active = $post['is_active'];
+        $this->keywords = $post['keywords'];
         if (!empty($_FILES['image']['name'])) {
             $this->image = $this->_uploadImage();
+            $this->_thumbnail();
         } else {
             $this->image = $post['old_image'];
         }
@@ -132,15 +134,16 @@ class Product_model extends CI_Model
         $thumbs = array('upload_thumb' => $this->upload->data());
 
 
-        $config['image_library'] = 'gd2';
-        $config['source_image'] = './assets/img/products/' . $thumbs['upload_thumbs']['file_name'];
+        $config['image_library']    = 'gd2';
+        $config['source_image']     = './assets/img/products/' . $thumbs['upload_thumb']['file_name'];
 
         // lokasi thumbnail
-        $config['new_image'] = './assets/img/products/thumbs/';
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-        $config['width']         = 25;
-        $config['height']       = 25;
+        $config['new_image']        = './assets/img/products/thumbs/';
+        $config['create_thumb']     = TRUE;
+        $config['maintain_ratio']   = TRUE;
+        $config['width']            = 250;
+        $config['height']           = 250;
+        $config['thumb_marker']     = '';
 
         $this->load->library('image_lib', $config);
 
@@ -152,7 +155,9 @@ class Product_model extends CI_Model
         $product = $this->getById($id);
         if ($product['image'] != 'product.jpg') {
             $filename = explode('.', $product['image'])[0];
-            return array_map('unlink', glob(FCPATH . "assets/img/products/$filename.*"));
+            array_map('unlink', glob(FCPATH . "assets/img/products/$filename.*"));
+            array_map('unlink', glob(FCPATH . "assets/img/products/thumbs/$filename.*"));
+            return true;
         }
     }
 }

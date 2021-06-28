@@ -67,6 +67,40 @@
                     </div>
                 </div>
 
+
+
+                <div class="form-group">
+                    <label for="weight">Weight</label>
+                    <input class="form-control <?= form_error('weight') ? 'is-invalid' : '' ?>" type="text" name="weight" id="weight" placeholder="Product weight" value="<?= $product['weight']; ?>" />
+                    <div class="invalid-feedback">
+                        <?= form_error('weight') ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="size">Ukuran</label>
+                    <input class="form-control <?= form_error('size') ? 'is-invalid' : '' ?>" type="text" name="size" id="size" placeholder="Product size" value="<?= $product['size']; ?>" />
+                    <div class="invalid-feedback">
+                        <?= form_error('size') ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description*</label>
+                    <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" name="description" id="editor" placeholder="Product description..."><?= $product['desc_product']; ?></textarea>
+                    <div class="invalid-feedback">
+                        <?= form_error('description') ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="keywords">Keywords (for SEO)</label>
+                    <textarea class="form-control <?= form_error('keywords') ? 'is-invalid' : '' ?>" name="keywords" id="keywords" placeholder="Product keywords..."><?= $product['keywords']; ?></textarea>
+                    <div class="invalid-feedback">
+                        <?= form_error('keywords') ?>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input class="form-control-file <?= form_error('image') ? 'is-invalid' : '' ?>" type="file" name="image" />
@@ -77,12 +111,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description*</label>
-                    <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" name="description" placeholder="Product description..."><?= $product['desc_product']; ?></textarea>
-                    <div class="invalid-feedback">
-                        <?= form_error('description') ?>
-                    </div>
+                    <label for="is_active">Status*</label>
+                    <select class="form-control" name="is_active" id="is_active">
+                        <option value="1" <?= $product['is_active'] == 1 ? 'selected' : ''; ?>> Publish </option>
+                        <option value="0" <?= $product['is_active'] == 0 ? 'selected' : ''; ?>> Save as draft </option>
+                    </select>
                 </div>
+
 
                 <input class="btn btn-success rounded-pill" type="submit" name="btn" value="Save" />
             </form>

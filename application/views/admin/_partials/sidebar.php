@@ -25,15 +25,30 @@
     </li>
 
     <li class="nav-item <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'active' : ''; ?>">
-        <a class="nav-link <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? '' : 'collapsed'; ?>" href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="<?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'true' : 'false'; ?>" aria-controls="collapseUtilities">
+        <a class="nav-link <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? '' : 'collapsed'; ?>" href="" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="<?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'true' : 'false'; ?>" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-boxes"></i>
             <span>Products</span>
         </a>
-        <div id="collapseUtilities" class="collapse <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'show' : ''; ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseProducts" class="collapse <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'show' : ''; ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Products</h6>
                 <a class="collapse-item <?= $this->uri->segment(2) == 'products' ? 'active' : ''; ?>" href="<?= base_url('admin/products'); ?>">Product</a>
                 <a class="collapse-item <?= $this->uri->segment(2) == 'categories' ? 'active' : ''; ?>" href="<?= base_url('admin/categories'); ?>">Product Category</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item <?= $this->uri->segment(2) == 'config' ? 'active' : ''; ?>">
+        <a class="nav-link <?= $this->uri->segment(2) == 'config' ? '' : 'collapsed'; ?>" href="" data-toggle="collapse" data-target="#collapseConfig" aria-expanded="<?= $this->uri->segment(2) == 'config' ? 'true' : 'false'; ?>" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Configuration</span>
+        </a>
+        <div id="collapseConfig" class="collapse <?= $this->uri->segment(2) == 'config' ? 'show' : ''; ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Configuration</h6>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'config' ? 'active' : ''; ?>" href="<?= base_url('admin/config'); ?>">Basic</a>
+                <a class="collapse-item <?= $this->uri->segment(3) == 'logo' ? 'active' : ''; ?>" href="<?= base_url('admin/config/logo'); ?>">Logo</a>
+                <a class="collapse-item <?= $this->uri->segment(3) == 'icon' ? 'active' : ''; ?>" href="<?= base_url('admin/config/icon'); ?>">Icon</a>
             </div>
         </div>
     </li>

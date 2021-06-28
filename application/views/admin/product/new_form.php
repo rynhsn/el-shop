@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <label for="weight">Weight</label>
-                    <input class="form-control <?= form_error('weight') ? 'is-invalid' : '' ?>" type="number" name="weight" id="weight" min="0" placeholder="Product weight" value="<?= set_value('weight'); ?>" />
+                    <input class="form-control <?= form_error('weight') ? 'is-invalid' : '' ?>" type="text" name="weight" id="weight" placeholder="Product weight" value="<?= set_value('weight'); ?>" />
                     <div class="invalid-feedback">
                         <?= form_error('weight') ?>
                     </div>
@@ -74,7 +74,7 @@
 
                 <div class="form-group">
                     <label for="size">Ukuran</label>
-                    <input class="form-control <?= form_error('size') ? 'is-invalid' : '' ?>" type="number" name="size" id="size" min="0" placeholder="Product size" value="<?= set_value('size'); ?>" />
+                    <input class="form-control <?= form_error('size') ? 'is-invalid' : '' ?>" type="text" name="size" id="size" placeholder="Product size" value="<?= set_value('size'); ?>" />
                     <div class="invalid-feedback">
                         <?= form_error('size') ?>
                     </div>

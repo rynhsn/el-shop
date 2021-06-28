@@ -8,6 +8,7 @@ class Products extends CI_Controller
     {
         parent::__construct();
         $this->load->model('product_model');
+        $this->load->model('image_model');
         $this->load->model('category_model');
         is_logged_in();
     }
@@ -38,6 +39,7 @@ class Products extends CI_Controller
     {
         $product = $this->product_model;
         $validation = $this->form_validation;
+        $validation->set_rules('id_product', 'Product code', 'trim|required|is_unique[products.id_product]');
         $validation->set_rules($product->rules());
 
         if ($validation->run()) {
@@ -60,12 +62,13 @@ class Products extends CI_Controller
 
         $product = $this->product_model;
         $validation = $this->form_validation;
+        $validation->set_rules('id_product', 'Product code', 'trim|required');
         $validation->set_rules($product->rules());
 
 
         if ($validation->run()) {
             $product->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil diubah');
         }
 
         $data['categories'] = $this->category_model->getAll();
@@ -85,6 +88,40 @@ class Products extends CI_Controller
         if ($this->product_model->delete($id)) {
             $this->session->set_flashdata('message', 'Berhasil dihapus');
             redirect(site_url('admin/products'));
+        }
+    }
+
+    public function images($id)
+    {
+        $product = $this->product_model;
+        $image = $this->image_model;
+
+        $validation = $this->form_validation;
+        $validation->set_rules($image->rules());
+
+        if ($validation->run()) {
+            $image->add($id);
+            $this->session->set_flashdata('message', 'Berhasil disimpan');
+            redirect('admin/products/images/' . $id);
+        }
+
+        $data['product'] = $product->getById($id);
+        $data['images'] = $image->getWhere($id);
+        // var_dump($data['images']);
+        // die;
+        $email = $this->session->userdata('email');
+        $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $this->_view('images', $data);
+    }
+
+    public function delimage($id = null, $id_product)
+    {
+        if (!isset($id)) show_404();
+
+        if ($this->image_model->delete($id)) {
+            $this->session->set_flashdata('message', 'Berhasil dihapus');
+            redirect(site_url('admin/products/images/' . $id_product));
         }
     }
 }

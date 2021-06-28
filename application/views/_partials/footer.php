@@ -8,9 +8,9 @@
                         <a href="#"><img src="img/footer-logo.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Address: Serang</li>
+                        <li>Address: 60-49 Road 11378 New York</li>
                         <li>Phone: +65 11.188.888</li>
-                        <li>Email: admin@gmail.com</li>
+                        <li>Email: hello.colorlib@gmail.com</li>
                     </ul>
                     <div class="footer-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
@@ -25,9 +25,7 @@
                     <h5>Information</h5>
                     <ul>
                         <li><a href="#">About Us</a></li>
-                        <li><a href="#">Checkout</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Serivius</a></li>
                     </ul>
                 </div>
             </div>
@@ -69,7 +67,7 @@
 
 <!-- Js Plugins -->
 <script src="<?= base_url('assets'); ?>/js/jquery-3.3.1.min.js"></script>
-<script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= base_url('assets'); ?>/js/bootstrap.min.js"></script>
 <script src="<?= base_url('assets'); ?>/js/jquery-ui.min.js"></script>
 <script src="<?= base_url('assets'); ?>/js/jquery.countdown.min.js"></script>
 <script src="<?= base_url('assets'); ?>/js/jquery.nice-select.min.js"></script>
@@ -78,6 +76,7 @@
 <script src="<?= base_url('assets'); ?>/js/jquery.slicknav.js"></script>
 <script src="<?= base_url('assets'); ?>/js/owl.carousel.min.js"></script>
 <script src="<?= base_url('assets'); ?>/js/main.js"></script>
+
 </body>
 
 </html>

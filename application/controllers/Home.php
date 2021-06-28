@@ -26,6 +26,9 @@ class Home extends CI_Controller
         $data['categories'] = $this->category->getAll();
         $data['products'] = $this->product->getAll();
 
+        $email = $this->session->userdata('email');
+        $data['user'] = $this->db->get_where('users', ['email' => $email])->row_array();
+
         $this->_view('shop', $data);
     }
 

@@ -53,6 +53,7 @@ $route['default_controller'] = 'home';
 $route['products'] = 'home/shop';
 $route['product-detail'] = 'home/shop_detail';
 $route['blogs'] = 'home/blogs';
+$route['blog-detail'] = 'home/blog_detail';
 $route['about'] = 'home/about';
 $route['contact'] = 'home/contact';
 $route['profile'] = 'home/profile';

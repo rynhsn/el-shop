@@ -44,14 +44,6 @@ class Product_model extends CI_Model
         ];
     }
 
-    // public function getWhere($sort, $id)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from($this->_table);
-    //     $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category');
-    //     return $this->db->get_where($this, [$sort => $id]);
-    // }
-
     public function home()
     {
         $this->db->select('products.*, categories.category, categories.category_slug, COUNT(product_images.id_image) AS image_total');
@@ -65,14 +57,46 @@ class Product_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function getProduct($limit, $start)
+    {
+        $this->db->select('products.*, categories.category, categories.category_slug, COUNT(product_images.id_image) AS image_total');
+        $this->db->from($this->_table);
+        $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
+        $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
+        $this->db->where('is_active', 1);
+        $this->db->group_by('id_product');
+        $this->db->limit($limit, $start);
+        $this->db->order_by('id_product', 'desc');
+        return $this->db->get()->result_array();
+    }
+
+    public function total()
+    {
+        $this->db->select('COUNT(*) AS total');
+        $this->db->from($this->_table);
+        $this->db->where('is_active', 1);
+        return $this->db->get()->row_array();
+    }
+
+    public function getCat()
+    {
+        $this->db->select('products.*, categories.category, categories.category_slug, COUNT(product_images.id_image) AS image_total');
+        $this->db->from($this->_table);
+        $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
+        $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
+        $this->db->group_by('category_id');
+        $this->db->order_by('id_product', 'desc');
+        return $this->db->get()->result_array();
+    }
+
     public function getAll()
     {
         $this->db->select('products.*, categories.category, categories.category_slug, COUNT(product_images.id_image) AS image_total');
         $this->db->from($this->_table);
         $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
         $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
-        // $this->db->order_by('id_product', 'desc');
         $this->db->group_by('id_product');
+        $this->db->order_by('id_product', 'desc');
         return $this->db->get()->result_array();
     }
 

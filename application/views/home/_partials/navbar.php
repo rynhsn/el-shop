@@ -10,7 +10,7 @@ $items = $this->cart->contents();
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('assets/img/' . $site['logo']); ?>" alt="<?= $site['site_name'] . ' | ' . $site['tagline']; ?>">
+                            <img src="<?= base_url('assets/img/' . $site['logo']); ?>" alt="">
                         </a>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ $items = $this->cart->contents();
                                                         <td class="si-text">
                                                             <div class="product-selected">
                                                                 <p><?= $item['name']; ?></p>
-                                                                <h6><?= 'IDR ' . number_format($item['price'], 0, ',', '.'); ?> x <?= $item['qty']; ?></h6>
+                                                                <h6><?= 'IDR ' . number_format($item['price'], 0, ',', '.') . ' x ' . $item['qty']; ?></h6>
                                                             </div>
                                                         </td>
                                                         <td class="si-close">

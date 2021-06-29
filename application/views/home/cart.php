@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
-                    <a href="./home.html"><i class="fa fa-home"></i> Home</a>
-                    <a href="./shop.html">Shop</a>
-                    <span>Shopping Cart</span>
+                    <a href="<?= base_url(); ?>"><i class="fa fa-home"></i> Home</a>
+                    <a href="<?= base_url('shop'); ?>"><?= ucfirst($this->uri->segment(1)); ?></a>
+                    <span><?= ucfirst($this->uri->segment(2)); ?></span>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                         <tbody>
                             <?php foreach ($items as $item) : ?>
                                 <tr>
-                                    <td class="cart-pic first-row"><img src="<?= base_url('assets/img/products/' . $item['options']['image']); ?>" alt=""></td>
+                                    <td class="cart-pic first-row"><img src="<?= base_url('assets/img/products/' . $item['options']['image']); ?>" alt="<?= $item['name']; ?>" width="128"></td>
                                     <td class="cart-title first-row">
                                         <h5><?= $item['name']; ?></h5>
                                     </td>

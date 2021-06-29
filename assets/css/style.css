@@ -111,6 +111,40 @@ ol {
 /*---------------------
   Helper CSS
 -----------------------*/
+/* 
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+} */
+
+.custom-pagination{ 
+	margin-top:20px; 
+} 
+
+.custom-pagination a{ 
+	background:#e7ab3c; 
+	color:#FFF; 
+	padding:10px; 
+}
+
+.custom-pagination a:hover{ 
+	background:#e7ab3c; 
+	color:#FFF; 
+	padding:10px; 
+	text-decoration: none; 
+} 
+
+.custom-pagination strong{ 
+	background:#ffe0a7; 
+	color:#e7ab3c; 
+	padding:10px; 
+}
 
 .section-title {
 	margin-bottom: 40px;

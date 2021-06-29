@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a href="<?= base_url(''); ?>"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span>
+                    <a href="<?= base_url(); ?>"><i class="fa fa-home"></i> Home</a>
+                    <span><?= ucfirst($this->uri->segment(1)); ?></span>
                 </div>
             </div>
         </div>
@@ -38,26 +38,20 @@
                     </div>
                 </div>
                 <div class="product-list">
-                    <?php foreach ($products as $product) : ?>
-                        <div class="row">
+                    <div class="row">
+                        <?php foreach ($products as $product) : ?>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
-                                    <?php
-                                    echo form_open(base_url('shop/add-to-cart'), 'id="myform"');
-                                    echo form_hidden('id', $product['id_product']);
-                                    echo form_hidden('qty', 1);
-                                    echo form_hidden('price', $product['price']);
-                                    echo form_hidden('name', $product['name']);
-                                    echo form_hidden('redirect_page', base_url());
-                                    ?>
                                     <div class="pi-pic">
-                                        <img src="<?= base_url('assets/img/products/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>" height="200px">
+                                        <img src="<?= base_url('assets/img/products/thumbs/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>">
+                                        <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <li class="w-icon active"><a type="submit"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="<?= base_url('product-detail'); ?>">+ Lihat</a></li>
+                                            <li class="w-icon active"> <a href="<?= base_url('shop/add-to-cart/' . $product['id_product']); ?>"><i class=" icon_bag_alt"></i></a>
+                                            </li>
+                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
@@ -67,14 +61,17 @@
                                             <h5><?= $product['name']; ?></h5>
                                         </a>
                                         <div class="product-price">
-                                            <?= "IDR " . number_format($product['price'], 0, ',', '.'); ?>
+                                            $14.00
+                                            <span>$35.00</span>
                                         </div>
                                     </div>
-                                    <?= form_close(); ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        </div>
+                    </div>
+                    <!-- <nav aria-label="Page navigation"> -->
+                    <?= $page; ?>
+                    <!-- </nav> -->
                 </div>
             </div>
         </div>

@@ -48,16 +48,6 @@
             <div class="product-slider owl-carousel">
                 <?php foreach ($products as $product) : ?>
 
-                    <?php
-                    echo form_open(base_url('shop/add-to-cart'), 'id="myform"');
-                    echo form_hidden('id', $product['id_product']);
-                    echo form_hidden('qty', 1);
-                    echo form_hidden('price', $product['price']);
-                    echo form_hidden('name', $product['name']);
-                    echo form_hidden('image', $product['image']);
-                    echo form_hidden('redirect_page', base_url());
-                    ?>
-
                     <div class="product-item">
                         <div class="pi-pic">
                             <img src="<?= base_url('assets/img/products/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>">
@@ -66,7 +56,7 @@
                             </div>
                             <ul>
                                 <li class="w-icon active">
-                                    <button type="submit"><i class=" icon_bag_alt"></i></button>
+                                    <a href="<?= base_url('shop/add-to-cart/' . $product['id_product']); ?>"><i class=" icon_bag_alt"></i></a>
                                 <li class="quick-view"><a href="<?= base_url('product-detail/' . $product['product_slug']); ?>">+ Detail</a></li>
                                 <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                             </ul>

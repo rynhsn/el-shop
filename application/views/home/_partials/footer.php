@@ -5,7 +5,7 @@
             <div class="col-lg-6">
                 <div class="footer-left">
                     <div class="footer-logo">
-                        <a href="<?= base_url(); ?>"><img src="<?= base_url('assets/img/thumbs/' . $site['logo']); ?>" alt="" width="256"></a>
+                        <a href="<?= base_url(); ?>"><img src="<?= base_url('assets/img/thumbs/footer-' . $site['logo']); ?>" alt="" width="256"></a>
                     </div>
                     <ul>
                         <li>Address: </li>

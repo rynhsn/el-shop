@@ -17,34 +17,29 @@ class Cart extends CI_Controller
 
         $this->_view('cart', $data);
     }
-    public function add()
+    public function add($id)
     {
         $post = $this->input->post();
 
-        $id = $post['id'];
-        $qty = $post['qty'];
-        $price = $post['price'];
-        $name = $post['name'];
-        $image = $post['image'];
-        $redirect = $post['redirect_page'];
+        $product = $this->product->getById($id);
 
         // proses masukkan ke cart
         $data = array(
-            'id'      => $id,
-            'qty'     => $qty,
-            'price'   => $price,
-            'name'    => $name,
-            'options'    => array('image' => $image)
+            'id'      => $product['id_product'],
+            'qty'     => 1,
+            'price'   => $product['price'],
+            'name'    => $product['name'],
+            'options' => array('image' => $product['image'])
         );
 
         $this->cart->insert($data);
-
-        redirect($redirect);
+        redirect(base_url('cart'));
     }
 
     public function _view($page, $data)
     {
-        $data['site'] = $this->config_model->get();
+        $data['site']   = $this->config_model->get();
+        $data['items']  = $this->cart->contents();
 
         $this->load->view('home/_partials/header', $data);
         $this->load->view('home/_partials/navbar', $data);

@@ -112,6 +112,18 @@ class Config_model extends CI_Model
         $this->image_lib->resize();
     }
 
+    public function nav_product()
+    {
+        $this->db->select('products.*, 
+                            categories.category, 
+                            categories.category_slug');
+        $this->db->from('products');
+        $this->db->join('categories', 'products' . '.category_id = ' . 'categories' . '.id_category', 'left');
+        $this->db->group_by('category_id');
+        $this->db->order_by('sort', 'asc');
+        return $this->db->get()->result_array();
+    }
+
     public function rules()
     {
         return [

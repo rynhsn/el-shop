@@ -143,7 +143,7 @@ class Auth extends CI_Controller
                 </button>
             </div>'
         );
-        redirect('login');
+        redirect('');
     }
 
     public function blocked()

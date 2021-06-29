@@ -1218,6 +1218,14 @@ ol {
 	background: #ffffff;
 }
 
+.product-item .pi-pic ul li.w-icon.active button {
+	background: #e7ab3c;
+	border: none;
+	color: #ffffff;
+	display: inline-block;
+	padding: 14px 9px;
+}
+
 .product-item .pi-pic ul li.w-icon.active a {
 	background: #e7ab3c;
 	color: #ffffff;

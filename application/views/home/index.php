@@ -5,11 +5,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
-                        <span>Bag,kids</span>
-                        <h1>Black friday</h1>
+                        <span>Category</span>
+                        <h1>Name</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore</p>
-                        <a href="#" class="primary-btn">Shop Now</a>
+                        <a href="<?= base_url('shop'); ?>" class="primary-btn">Shop Now</a>
                     </div>
                 </div>
                 <div class="off-card">
@@ -21,11 +21,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
-                        <span>Bag,kids</span>
-                        <h1>Black friday</h1>
+                        <span>Category</span>
+                        <h1>Name</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore</p>
-                        <a href="#" class="primary-btn">Shop Now</a>
+                        <a href="<?= base_url('shop'); ?>" class="primary-btn">Shop Now</a>
                     </div>
                 </div>
                 <div class="off-card">
@@ -37,48 +37,55 @@
 </section>
 <!-- Hero Section End -->
 <!-- Women Banner Section Begin -->
-<section class="women-banner spad">
+<section class="women-banner spad mt-5">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
-            </div>
-            <div class=>
-                <div class="filter-control">
-                    <ul>
-                        <li class="active">Clothings</li>
-                        <li>HandBag</li>
-                        <li>Shoes</li>
-                        <li>Accessories</li>
-                    </ul>
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Products</h2>
                 </div>
-                <div class="product-slider owl-carousel">
-                    <?php foreach ($products as $product) : ?>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="<?= base_url('assets/img/products/' . $product['image']); ?>" alt="">
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="#">+ Detail</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
+            </div>
+            <div class="product-slider owl-carousel">
+                <?php foreach ($products as $product) : ?>
+
+                    <?php
+                    echo form_open(base_url('shop/add-to-cart'), 'id="myform"');
+                    echo form_hidden('id', $product['id_product']);
+                    echo form_hidden('qty', 1);
+                    echo form_hidden('price', $product['price']);
+                    echo form_hidden('name', $product['name']);
+                    echo form_hidden('image', $product['image']);
+                    echo form_hidden('redirect_page', base_url());
+                    ?>
+
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="<?= base_url('assets/img/products/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>">
+                            <div class="icon">
+                                <i class="icon_heart_alt"></i>
                             </div>
-                            <div class="pi-text">
-                                <div class="catagory-name"><?= $product['category']; ?></div>
-                                <a href="#">
-                                    <h5><?= $product['name']; ?></h5>
-                                </a>
-                                <div class="product-price">
-                                    <?= "Rp " . number_format($product['price'], 0, ',', '.'); ?>
-                                </div>
+                            <ul>
+                                <li class="w-icon active">
+                                    <button type="submit"><i class=" icon_bag_alt"></i></button>
+                                <li class="quick-view"><a href="<?= base_url('product-detail/' . $product['product_slug']); ?>">+ Detail</a></li>
+                                <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name"><?= $product['category']; ?></div>
+                            <a href="<?= base_url('product-detail/' . $product['product_slug']); ?>">
+                                <h5><?= $product['name']; ?></h5>
+                            </a>
+                            <div class="product-price">
+                                <?= "IDR " . number_format($product['price'], 0, ',', '.'); ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                </div>
+                    </div>
+                    <?= form_close(); ?>
+                <?php endforeach; ?>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!-- Women Banner Section End -->

@@ -22,7 +22,7 @@
                     <h4 class="fw-title">Categories</h4>
                     <ul class="filter-catagories">
                         <?php foreach ($nav_product as $category) : ?>
-                            <li><a href="<?= base_url('shop/' . $category['category_slug']); ?>"><?= $category['category']; ?></a></li>
+                            <li><a href="<?= base_url('shop/category/' . $category['category_slug']); ?>"><?= $category['category']; ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -44,25 +44,19 @@
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="<?= base_url('assets/img/products/thumbs/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
                                         <ul>
                                             <li class="w-icon active"> <a href="<?= base_url('shop/add-to-cart/' . $product['id_product']); ?>"><i class=" icon_bag_alt"></i></a>
                                             </li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            <li class="quick-view"><a href="<?= base_url('shop/detail/' . $product['product_slug']); ?>">+ Details</a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name"><?= $product['category']; ?></div>
-                                        <a href="#">
+                                        <a href="<?= base_url('shop/detail/' . $product['product_slug']); ?>">
                                             <h5><?= $product['name']; ?></h5>
                                         </a>
                                         <div class="product-price">
-                                            $14.00
-                                            <span>$35.00</span>
+                                            <?= "IDR " . number_format($product['price'], 0, ',', '.'); ?>
                                         </div>
                                     </div>
                                 </div>

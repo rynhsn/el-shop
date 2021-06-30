@@ -51,19 +51,16 @@
                     <div class="product-item">
                         <div class="pi-pic">
                             <img src="<?= base_url('assets/img/products/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
                             <ul>
                                 <li class="w-icon active">
                                     <a href="<?= base_url('shop/add-to-cart/' . $product['id_product']); ?>"><i class=" icon_bag_alt"></i></a>
-                                <li class="quick-view"><a href="<?= base_url('product-detail/' . $product['product_slug']); ?>">+ Detail</a></li>
+                                <li class="quick-view"><a href="<?= base_url('shop/detail/' . $product['product_slug']); ?>">+ Details</a></li>
                                 <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                             </ul>
                         </div>
                         <div class="pi-text">
                             <div class="catagory-name"><?= $product['category']; ?></div>
-                            <a href="<?= base_url('product-detail/' . $product['product_slug']); ?>">
+                            <a href="<?= base_url('shop/detail/' . $product['product_slug']); ?>">
                                 <h5><?= $product['name']; ?></h5>
                             </a>
                             <div class="product-price">

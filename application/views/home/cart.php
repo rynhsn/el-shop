@@ -14,11 +14,17 @@
 </div>
 <!-- Breadcrumb Section Begin -->
 
+<?= form_open('shop/update-cart'); ?>
 <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <?php if ($this->session->flashdata('message')) : ?>
+                    <div class="alert alert-warning">
+                        <?= $this->session->flashdata('message'); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="cart-table">
                     <table>
                         <thead>
@@ -33,6 +39,8 @@
                         </thead>
                         <tbody>
                             <?php foreach ($items as $item) : ?>
+                                <?=
+                                form_hidden('rowid[]', $item['rowid']);; ?>
                                 <tr>
                                     <td class="cart-pic first-row"><img src="<?= base_url('assets/img/products/' . $item['options']['image']); ?>" alt="<?= $item['name']; ?>" width="128"></td>
                                     <td class="cart-title first-row">
@@ -42,12 +50,12 @@
                                     <td class="qua-col first-row">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="<?= $item['qty']; ?>">
+                                                <input type="text" name="qty[]" value="<?= $item['qty']; ?>">
                                             </div>
                                         </div>
                                     </td>
                                     <td class="total-price first-row"><?= 'IDR ' . number_format($item['subtotal'], 0, ',', '.'); ?></td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    <td class="close-td first-row"><a href="<?= base_url('shop/remove-cart/' . $item['rowid']); ?>"><i class="ti-close"></i></a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -57,14 +65,7 @@
                     <div class="col-lg-4">
                         <div class="cart-buttons">
                             <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                            <a href="#" class="primary-btn up-cart">Update cart</a>
-                        </div>
-                        <div class="discount-coupon">
-                            <h6>Discount Codes</h6>
-                            <form action="#" class="coupon-form">
-                                <input type="text" placeholder="Enter your codes">
-                                <button type="submit" class="site-btn coupon-btn">Apply</button>
-                            </form>
+                            <button name="update" type="submit" class="primary-btn up-cart">Update cart</button>
                         </div>
                     </div>
                     <div class="col-lg-4 offset-lg-4">
@@ -82,3 +83,4 @@
     </div>
 </section>
 <!-- Shopping Cart Section End -->
+<?= form_close(); ?>

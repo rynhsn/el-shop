@@ -21,7 +21,7 @@ $items = $this->cart->contents();
                     <ul class="nav-right">
                         <li class="cart-icon">
                             <a href="<?= base_url('shop/cart'); ?>">
-                                <i class="icon_bag_alt"></i>
+                                <i class="icon_bag"></i>
                                 <span><?= count($items); ?></span>
                             </a>
 
@@ -63,9 +63,15 @@ $items = $this->cart->contents();
                             </div>
                         </li>
                         <li class="heart-icon">
-                            <a href="<?= base_url('login'); ?>">
-                                <i class="icon_profile"></i> Login
-                            </a>
+                            <?php if ($user) : ?>
+                                <a href="<?= base_url('member'); ?>">
+                                    <i class="icon_profile"></i><span> <?= $user['full_name']; ?></span>
+                                </a>
+                            <?php else : ?>
+                                <a href="<?= base_url('login'); ?>">
+                                    <i class="icon_profile"></i>
+                                </a>
+                            <?php endif; ?>
                         </li>
                     </ul>
                 </div>

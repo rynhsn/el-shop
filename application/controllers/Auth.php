@@ -89,7 +89,7 @@ class Auth extends CI_Controller
                     } else if ($user['role'] == 'kurir') {
                         redirect('kurir');
                     } else {
-                        redirect('profile');
+                        redirect('member');
                     }
                 } else {
                     $this->session->set_flashdata(

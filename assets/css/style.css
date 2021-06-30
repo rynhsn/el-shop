@@ -128,7 +128,7 @@ ol {
 } 
 
 .custom-pagination a{ 
-	background:#e7ab3c; 
+	background:#252525; 
 	color:#FFF; 
 	padding:10px; 
 }
@@ -141,8 +141,8 @@ ol {
 } 
 
 .custom-pagination strong{ 
-	background:#ffe0a7; 
-	color:#e7ab3c; 
+	background:#e7ab3c; 
+	color:#fff; 
 	padding:10px; 
 }
 
@@ -537,22 +537,24 @@ ol {
 .inner-header .nav-right li.heart-icon a {
 	color: #252525;
 	position: relative;
+	/* text-decoration: none; */
 	display: inline-block;
 }
 
+.inner-header .nav-right li.heart-icon a:hover {
+	color: #e7ab3c;
+}
+
 .inner-header .nav-right li.heart-icon a span {
-	position: absolute;
-	right: -8px;
-	top: -1px;
-	height: 15px;
-	width: 15px;
-	background: #e7ab3c;
-	color: #ffffff;
-	border-radius: 50%;
-	font-size: 11px;
-	font-weight: 700;
+	position: relative;
+	color: #252525;
+	font-size: 14px;
 	text-align: center;
-	line-height: 15px;
+	line-height: auto;
+}
+
+.inner-header .nav-right li.heart-icon a:hover span {
+	color: #e7ab3c;
 }
 
 .inner-header .nav-right li.cart-icon {
@@ -2357,7 +2359,13 @@ ol {
 }
 
 .product-details .quantity .primary-btn.pd-cart {
-	padding: 14px 70px 10px;
+	background: #e7ab3c;
+	border: none;
+	color: #ffffff;
+	display: inline-block;
+	/* kalo diganti jadi a elemennya, jangan dihapus paddingnya */
+	padding: 14px 70px 10px; 
+	
 }
 
 .product-details .pd-tags {

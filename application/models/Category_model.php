@@ -33,6 +33,14 @@ class Category_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function getBySlug($param)
+    {
+        $this->db->select('*');
+        $this->db->from($this->_table);
+        $this->db->where('category_slug', $param);
+        return $this->db->get()->row_array();
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->_table, ['id_category' => $id])->row_array();

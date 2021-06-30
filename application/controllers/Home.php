@@ -13,20 +13,13 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['products'] = $this->product->home();
-        if ($this->session->userdata('email')) {
-            $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        }
 
-        $this->_view('index', $data);
-    }
-
-    public function shop_detail()
-    {
         $email              = $this->session->userdata('email');
         $data['user']       = $this->db->get_where('users', ['email' => $email])->row_array();
 
-        $this->_view('detail-shop', $data);
+        $data['products'] = $this->product->home();
+
+        $this->_view('index', $data);
     }
 
     public function blogs()

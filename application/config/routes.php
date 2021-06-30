@@ -53,18 +53,20 @@ $route['default_controller'] = 'home';
 
 // $route['shop'] = 'shop';
 $route['shop/(:num)'] = 'shop/index/$1';
+$route['shop/detail/(:any)'] = 'shop/product_detail/$1';
+$route['shop/category/(:any)'] = 'shop/category/$1';
 $route['shop/cart'] = 'cart';
+$route['shop/add-to-cart'] = 'cart/add';
 $route['shop/add-to-cart/(:any)'] = 'cart/add/$1';
-// $route['shop/checkout'] = 'cart/';
-$route['product-detail/(:any)'] = 'home/shop_detail/$1';
+$route['shop/update-cart'] = 'cart/update';
+$route['shop/remove-cart/(:any)'] = 'cart/remove/$1';
+$route['shop/checkout'] = 'shop/checkout';
 
 $route['blogs'] = 'home/blogs';
 $route['blog-detail'] = 'home/blog_detail';
 
 $route['about'] = 'home/about';
 $route['contact'] = 'home/contact';
-
-$route['profile'] = 'home/profile';
 
 $route['login'] = 'auth';
 $route['register'] = 'auth/register';
@@ -73,5 +75,6 @@ $route['blocked'] = 'auth/blocked';
 
 $route['admin'] = 'admin/overview';
 $route['kurir'] = 'kurir/overview';
+$route['member'] = 'member/overview';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

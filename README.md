@@ -29,7 +29,8 @@ BELUM
 ------
 
 ADMIN
-Function
+- Dashboard
+- Kelola pesanan
 - Explode email, ambil string pada array pertama untuk dijadikan sebagai username.
 
 KURIR
@@ -38,12 +39,11 @@ KURIR
 MEMBER
 - Check out
 - Edit profile
-- Edit Password
+- Edit password
 - Tracking order
+- Confirm order
 
 VISITOR
 - Blog
 - About
 - Contact
-
-- Kurir

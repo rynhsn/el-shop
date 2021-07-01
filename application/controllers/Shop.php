@@ -126,34 +126,14 @@ class Shop extends CI_Controller
         $this->_view('detail-shop', $data);
     }
 
-    public function checkout()
-    {
-        $email              = $this->session->userdata('email');
-        $data['user']       = $this->db->get_where('users', ['email' => $email])->row_array();
-
-        if (!$email) {
-            $this->session->set_flashdata(
-                'message',
-                '<div class="alert alert-warning rounded-pill" role="alert">
-                    Please login for checkout!
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>'
-            );
-            redirect('login');
-        }
-        $this->_view('checkout', $data);
-    }
-
     public function _view($page, $data)
     {
         $data['site']        = $this->config_model->get();
         $data['nav_product'] = $this->config_model->nav_product();
 
-        $this->load->view('home/_partials/header', $data);
-        $this->load->view('home/_partials/navbar', $data);
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/navbar', $data);
         $this->load->view('home/' . $page, $data);
-        $this->load->view('home/_partials/footer', $data);
+        $this->load->view('_partials/footer', $data);
     }
 }

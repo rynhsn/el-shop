@@ -58,9 +58,9 @@ class Home extends CI_Controller
         $data['site']        = $this->config_model->get();
         $data['nav_product'] = $this->config_model->nav_product();
 
-        $this->load->view('home/_partials/header', $data);
-        $this->load->view('home/_partials/navbar', $data);
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/navbar', $data);
         $this->load->view('home/' . $page, $data);
-        $this->load->view('home/_partials/footer', $data);
+        $this->load->view('_partials/footer', $data);
     }
 }

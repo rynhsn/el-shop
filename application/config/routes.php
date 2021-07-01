@@ -60,7 +60,7 @@ $route['shop/add-to-cart'] = 'cart/add';
 $route['shop/add-to-cart/(:any)'] = 'cart/add/$1';
 $route['shop/update-cart'] = 'cart/update';
 $route['shop/remove-cart/(:any)'] = 'cart/remove/$1';
-$route['shop/checkout'] = 'shop/checkout';
+$route['shop/check-out'] = 'cart/check_out';
 
 $route['blogs'] = 'home/blogs';
 $route['blog-detail'] = 'home/blog_detail';
@@ -75,6 +75,13 @@ $route['blocked'] = 'auth/blocked';
 
 $route['admin'] = 'admin/overview';
 $route['kurir'] = 'kurir/overview';
+
 $route['member'] = 'member/overview';
+$route['member/history'] = 'member/overview/history';
+$route['member/history/(:any)'] = 'member/overview/history/$1';
+$route['member/profile'] = 'member/overview/profile';
+$route['member/payout'] = 'member/overview/payout';
+$route['member/payout/(:any)'] = 'member/overview/payout/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

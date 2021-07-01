@@ -39,10 +39,9 @@
                         </thead>
                         <tbody>
                             <?php foreach ($items as $item) : ?>
-                                <?=
-                                form_hidden('rowid[]', $item['rowid']);; ?>
+                                <?= form_hidden('rowid[]', $item['rowid']); ?>
                                 <tr>
-                                    <td class="cart-pic first-row"><img src="<?= base_url('assets/img/products/' . $item['options']['image']); ?>" alt="<?= $item['name']; ?>" width="128"></td>
+                                    <td class="cart-pic first-row"><img src="<?= base_url('assets/img/products/thumbs/' . $item['options']['image']); ?>" alt="<?= $item['name']; ?>" width="128"></td>
                                     <td class="cart-title first-row">
                                         <h5><?= $item['name']; ?></h5>
                                     </td>
@@ -64,8 +63,10 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="cart-buttons">
-                            <a href="#" class="primary-btn continue-shop">Continue shopping</a>
-                            <button name="update" type="submit" class="primary-btn up-cart">Update cart</button>
+                            <a href="<?= base_url('shop'); ?>" class="primary-btn continue-shop">Continue shopping</a>
+                            <?php if ($items) : ?>
+                                <button name="update" type="submit" class="primary-btn up-cart">Update cart</button>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-lg-4 offset-lg-4">
@@ -74,7 +75,9 @@
                                 <li class="subtotal">Subtotal <span><?= 'IDR ' . number_format($this->cart->total(), 0, ',', '.'); ?></span></li>
                                 <li class="cart-total">Total <span><?= 'IDR ' . number_format($this->cart->total(), 0, ',', '.'); ?></span></li>
                             </ul>
-                            <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            <?php if ($items) : ?>
+                                <a href="<?= base_url('shop/check-out'); ?>" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

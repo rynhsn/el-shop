@@ -23,6 +23,11 @@
             <i class="fas fa-fw fa-user-cog"></i>
             <span>Users</span></a>
     </li>
+    <li class="nav-item <?= $this->uri->segment(2) == 'accounts' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('admin/accounts'); ?>">
+            <i class="fas fa-fw fa-wallet"></i>
+            <span>Accounts</span></a>
+    </li>
 
     <li class="nav-item <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'active' : ''; ?>">
         <a class="nav-link <?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? '' : 'collapsed'; ?>" href="" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="<?= $this->uri->segment(2) == 'categories' || $this->uri->segment(2) == 'products' ? 'true' : 'false'; ?>" aria-controls="collapseUtilities">

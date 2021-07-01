@@ -84,11 +84,19 @@ class User_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
+        $this->id_user = $post['id'];
         $this->db->set('id_user', $post['id']);
         $this->db->set('full_name', htmlspecialchars($post['full_name']));
         $this->db->set('username', htmlspecialchars($post['username']));
         $this->db->set('email', htmlspecialchars($post['email']));
         $this->db->set('role', htmlspecialchars($post['role']));
+        $this->db->set('jk', $post['jk']);
+        $this->db->set('tgl_lahir', htmlspecialchars($post['tgl_lahir']));
+        $this->db->set('kecamatan', htmlspecialchars($post['kecamatan']));
+        $this->db->set('kab_kota', htmlspecialchars($post['kab_kota']));
+        $this->db->set('kode_pos', htmlspecialchars($post['kode_pos']));
+        $this->db->set('prov', htmlspecialchars($post['prov']));
+        $this->db->set('no_hp', htmlspecialchars($post['no_hp']));
         $this->db->set('is_active', $post['is_active']);
 
         if (!empty($_FILES['image']['name'])) {
@@ -105,7 +113,6 @@ class User_model extends CI_Model
         $this->_deleteImage($id);
         return $this->db->delete($this->_table, array('id_user' => $id));
     }
-
 
     private function _uploadImage()
     {

@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Products</h1>
+    <h1 class="h3 mb-2 text-gray-800">Categories</h1>
     <?php if ($this->session->flashdata('success')) : ?>
         <div class="alert alert-success rounded-pill" role="alert">
             <?= $this->session->flashdata('success'); ?>

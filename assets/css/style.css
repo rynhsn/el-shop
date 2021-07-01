@@ -2724,8 +2724,19 @@ ol {
 	padding-top: 30px;
 }
 
+.cart-table table tr td.first-row a.trx:hover {
+	color: #e7ab3c;
+}
+
+.cart-table table tr td.first-row a.trx {
+	color: #252525;
+}
+
 .cart-table table tr td.cart-pic {
 	width: 21%;
+}
+.cart-table table tr td.num {
+	width: 10%;
 }
 
 .cart-table table tr td.cart-title {
@@ -2749,6 +2760,32 @@ ol {
 
 .cart-table table tr td.qua-col {
 	width: 16%;
+}
+
+.cart-table table tr td.qua-col a.payout:hover{
+	background: #000000;
+	border-color: #000000;
+}
+
+.cart-table table tr td.qua-col a.confirm:hover {
+	background: #000000;
+	border-color: #000000;
+}
+
+.cart-table table tr td.qua-col a.payout {
+		padding: 13px 18px;
+		margin: 20px;
+		background: #252525;
+		border-color: #252525;
+		/* text-decoration: none; */
+}
+
+.cart-table table tr td.qua-col a.confirm {
+		padding: 13px 15px;
+		margin: 20px;
+		background: #252525;
+		border-color: #252525;
+		/* text-decoration: none; */
 }
 
 .cart-table table tr td.qua-col .quantity {
@@ -2796,11 +2833,13 @@ ol {
 	width: 12%;
 }
 
-.cart-table table tr td.close-td {
+.cart-table table tr td.close-td 
+.cart-table table tr td.close-td a{
 	font-size: 16px;
 	color: #252525;
 	width: 8%;
 }
+
 
 .cart-table table tr td.close-td i {
 	cursor: pointer;
@@ -2858,6 +2897,40 @@ ol {
 	background: transparent;
 	border: 1px solid transparent;
 	padding: 13px 25px 10px 35px;
+}
+
+.proceed-checkout table {
+	border: 2px solid #ebebeb;
+	background: #f3f3f3;
+	width: 400px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 16px;
+	margin-bottom: 20px;
+}
+
+.proceed-checkout table tr td{
+	border: 2px solid #ebebeb;
+	padding: 5px 0;
+}
+
+.proceed-checkout table tr td.title{
+	padding-left: 40px;
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+.proceed-checkout table tr td.content{
+	padding-left: 20px;
+	padding-right: 10px;
+}
+
+.proceed-checkout table tr td.top{
+	padding-top: 16px;
+}
+
+.proceed-checkout table tr td.bottom{
+	padding-bottom: 16px;
 }
 
 .proceed-checkout ul {
@@ -3107,6 +3180,7 @@ ol {
 .checkout-form .place-order .order-total .order-btn {
 	text-align: center;
 }
+
 
 .checkout-form .place-order .order-total .order-btn .place-btn {
 	padding: 13px 40px 11px;
@@ -3686,6 +3760,25 @@ ol {
 	color: #b2b2b2;
 }
 
+.contact-widget .cw-item .ci-button button {
+	font-size: 12px;
+	font-weight: 700;
+	width: 75%;
+	border: none;
+	color: #ffffff;
+	background: #252525;
+	text-transform: uppercase;
+	padding: 15px 15px 15px 15px;
+	display: block;
+	text-align: center;
+}
+
+.contact-widget .cw-item .ci-image {
+	display: table;
+	padding-right: 25px;
+
+}
+
 .contact-widget .cw-item .ci-text {
 	display: table;
 	padding-left: 30px;
@@ -3694,6 +3787,24 @@ ol {
 .contact-widget .cw-item .ci-text span {
 	color: #b2b2b2;
 	font-size: 16px;
+}
+
+.contact-widget .cw-item .ci-text textarea {
+	color: #4d4d4d;
+	width: 120%;
+	font-size: 16px;
+	height: 150px;
+	border: none;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.contact-widget .cw-item .ci-text input {
+	color: #4d4d4d;
+	width: 120%;
+	font-size: 16px;
+	height: 35px;
+	border: none;
+	border-bottom: 1px solid #ebebeb;
 }
 
 .contact-widget .cw-item .ci-text p {

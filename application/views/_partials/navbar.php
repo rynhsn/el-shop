@@ -44,7 +44,7 @@ $items = $this->cart->contents();
                                                             </div>
                                                         </td>
                                                         <td class="si-close">
-                                                            <i class="ti-close"></i>
+                                                            <a href="<?= base_url('shop/remove-cart/' . $item['rowid']); ?>"><i class="ti-close"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -57,7 +57,7 @@ $items = $this->cart->contents();
                                     </div>
                                     <div class="select-button">
                                         <a href="<?= base_url('shop/cart'); ?>" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="<?= base_url('shop/check-out'); ?>" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 <?php endif; ?>
                             </div>

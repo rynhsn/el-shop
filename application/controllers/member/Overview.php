@@ -10,6 +10,7 @@ class Overview extends CI_Controller
         // $this->load->model('product_model', 'product');
         // $this->load->model('image_model', 'image');
         $this->load->model('user_model', 'user');
+        $this->load->model('account_model', 'account');
         $this->load->model('checkout_model', 'checkout');
         $this->load->model('checkout_detail_model', 'checkout_detail');
         is_logged_in();
@@ -68,9 +69,25 @@ class Overview extends CI_Controller
         $email              = $this->session->userdata('email');
         $data['user']       = $this->db->get_where('users', ['email' => $email])->row_array();
 
-        $data['itemtrx']    = $this->checkout->getById($param);
+        if (!$param) redirect($data['user']['role']);
 
-        // var_dump($data['history']);
+        $data['trx']        = $this->checkout->getById($param);
+        $data['accounts']   = $this->account->getAll();
+
+
+
+        $validation = $this->form_validation;
+        $validation->set_rules($this->checkout->rulesPay());
+
+        if ($validation->run()) {
+
+            $this->checkout->update($param);
+
+            $this->session->set_flashdata('message', 'Your profile has been update.');
+            redirect('member/profile');
+        }
+
+        var_dump($this->input->post());
         // die;
         $this->_view('payout', $data);
     }

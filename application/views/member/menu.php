@@ -1,5 +1,5 @@
 <div class="col-lg-2 col-md-4 col-sm-6">
-    <div class="filter-widget">
+    <div class="filter-widget menu">
         <h4 class="fw-title">Menu</h4>
         <ul class="filter-catagories">
             <li><a href="<?= base_url('shop/cart'); ?>">Cart</a></li>

@@ -6,8 +6,7 @@
                 <div class="breadcrumb-text product-more">
                     <a href="<?= base_url(); ?>"><i class="fa fa-home"></i> Home</a>
                     <a href="<?= base_url('member'); ?>"><?= ucfirst($this->uri->segment(1)); ?></a>
-                    <a href="<?= base_url('member/history'); ?>"><?= ucfirst($this->uri->segment(2)); ?></a>
-                    <span>Detail</span>
+                    <span>Payout</span>
                 </div>
             </div>
         </div>
@@ -19,69 +18,91 @@
 <section class="product-shop spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 order-1 order-lg-2">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="proceed-checkout">
-                            <table>
-                                <tr>
-                                    <td class="title top">TRX Code</td>
-                                    <td class="title content top"><?= $trx['id_trx']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="title">Date</td>
-                                    <td class="content"><?= $trx['tgl_trx']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="title">Total</td>
-                                    <td class="content"><?= 'IDR ' . number_format($trx['total'], 0, ',', '.'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td class="title bottom">Status</td>
-                                    <td class="content bottom"><?= $trx['status_trx']; ?></td>
-                                </tr>
-                            </table>
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <tr>
+                        <th scope="col">TRX Code</th>
+                        <th scope="col"><?= $trx['id_trx']; ?></th>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td><?= $trx['tgl_trx']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><?= 'IDR ' . number_format($trx['total'], 0, ',', '.'); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td><?= $trx['status_trx']; ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-12 ml-3">
+                <form action="<?= base_url('member/payout/' . $trx['id_trx']); ?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="id_acc" class="col-sm-3 col-form-label">Pay to account</label>
+                        <div class="col-sm-9">
+                            <select class="rounded-0 form-control" id="id_acc" name="id_acc">
+                                <?php foreach ($accounts as $account) : ?>
+                                    <option value="<?= $account['id_acc']; ?>" <?= set_value('acc_id') == $account['acc_num'] ? 'selected' : ''; ?>><?= $account['bank_name']; ?> (Account number : <?= $account['acc_num']; ?> aka <?= $account['owner_name']; ?>)</option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="cart-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Image</th>
-                                        <th class="p-name">Name</th>
-                                        <th>QTY</th>
-                                        <th>Price</th>
-                                        <th>Sub Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 0; ?>
-                                    <?php foreach ($detail as $item) : ?>
-                                        <?php $i++; ?>
-                                        <tr>
-                                            <td class="num first-row"><?= $i; ?></td>
-                                            <td class="cart-pic first-row"><img src="<?= base_url('assets/img/products/thumbs/' . $item['image']); ?>" alt="<?= $item['name']; ?>" width="128"></td>
-                                            <td class="cart-title first-row"><?= $item['name']; ?></td>
-                                            <td class="qua-col first-row"><?= $item['qty']; ?></td>
-                                            <td class="p-price first-row"><?= 'IDR ' . number_format($item['price'], 0, ',', '.'); ?></td>
-                                            <td class="p-price first-row"><?= 'IDR ' . number_format($item['sub_total'], 0, ',', '.'); ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+
+                    <div class="form-group row">
+                        <label for="pay_date" class="col-sm-3 col-form-label">Date</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="rounded-0 form-control" name="pay_date" id="pay_date" placeholder="Date" value="<?= set_value('pay_date'); ?>">
                         </div>
-                        <div class="row">
-                            <div class="col-lg-4">
-                            </div>
-                            <div class="col-lg-4 offset-lg-4">
+                    </div>
+                    <div class="form-group row">
+                        <label for="amount" class="col-sm-3 col-form-label">Amount</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="rounded-0 form-control <?= form_error('amount') ? 'is-invalid' : '' ?>" name="amount" id="amount" placeholder="Amount" value="<?= 'IDR ' . number_format($trx['total'], 0, ',', '.'); ?>" readonly>
+                            <div class="invalid-feedback">
+                                <?= form_error('amount') ?>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <label for="bank_pelanggan" class="col-sm-3 col-form-label">Bank Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="rounded-0 form-control <?= form_error('bank_pelanggan') ? 'is-invalid' : '' ?>" name="bank_pelanggan" id="bank_pelanggan" placeholder="Bank Name" value="<?= set_value('bank_pelanggan'); ?>">
+                            <div class="invalid-feedback">
+                                <?= form_error('bank_pelanggan') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rekening_pembayaran" class="col-sm-3 col-form-label">Account Number</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="rounded-0 form-control <?= form_error('rekening_pembayaran') ? 'is-invalid' : '' ?>" name="rekening_pembayaran" id="rekening_pembayaran" placeholder="Account Number" value="<?= set_value('rekening_pembayaran'); ?>">
+                            <div class="invalid-feedback">
+                                <?= form_error('rekening_pembayaran') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rekening_pelanggan" class="col-sm-3 col-form-label">Alias</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="rounded-0 form-control <?= form_error('rekening_pelanggan') ? 'is-invalid' : '' ?>" name="rekening_pelanggan" id="rekening_pelanggan" placeholder="Owner Name" value="<?= set_value('rekening_pelanggan'); ?>">
+                            <div class="invalid-feedback">
+                                <?= form_error('rekening_pelanggan') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="image" class="col-sm-3 col-form-label">Proof of trx</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-custom-file" name="image" id="image" placeholder="Owner Name">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark rounded-0 float-right">Pay Now!</button>
+                </form>
             </div>
         </div>
     </div>

@@ -94,26 +94,26 @@ class Transactions extends CI_Controller
         $data['account']    = $this->account->getById($data['trx']['acc_id']);
 
         $html = $this->load->view('admin/transaction/resi', $data, true);
-        // load
+        // load Mpdf
         $mpdf = new \Mpdf\Mpdf();
         // header
         $mpdf->SetHTMLHeader('
             <div style="text-align: left; font-weight: bold;">
-                <img src="' . base_url('assets/img/' . $data['site']['logo']) . '" style="height:50px; width:auto;">
+                <img src="' . base_url('assets/img/' . $data['site']['logo']) . '" style="height:50px; width:auto;" />
             </div>');
         // footer
         $mpdf->SetHTMLFooter('
             <div style="padding:10px 20px; background-color:gray; color:white; font-size:12px;">
-                Address ' . $data['site']['site_name'] . '(' . $data['site']['address'] . ') 
+                Address : ' . $data['site']['site_name'] . ' (' . $data['site']['address'] . ') 
                 <br> 
-                Phone ' . $data['site']['phone'] . '
+                Phone : ' . $data['site']['phone'] . '
             </div>');
         // Write some HTML code:
         $mpdf->WriteHTML($html);
 
-        $file_name = url_title($data['site']['website'], 'dash', 'true') . '-' . $data['trx']['id_trx'];
+        $file_name = url_title($data['site']['site_name'], 'dash', 'true') . '-' . $data['trx']['id_trx'] . '.pdf';
         // Output a PDF file directly to the browser
-        $mpdf->Output();
+        $mpdf->Output($file_name, 'I');
     }
 
     public function proccess($param)

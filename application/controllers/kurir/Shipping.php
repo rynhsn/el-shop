@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Delivery extends CI_Controller
+class Shipping extends CI_Controller
 {
     public function __construct()
     {
@@ -30,7 +30,7 @@ class Delivery extends CI_Controller
         $data['transactions'] = $this->checkout->getWhere('status_trx', 'Delivery')->result_array();
 
 
-        $this->_view('delivery', $data);
+        $this->_view('shipping', $data);
     }
 
     public function finish($param)
@@ -41,6 +41,6 @@ class Delivery extends CI_Controller
         $this->db->update('checkout', $this, array('id_trx' => $param));
 
         $this->session->set_flashdata('message', 'Berhasil, Pesanan telah sampai di tujuan!');
-        redirect('kurir/delivery');
+        redirect('kurir/shipping');
     }
 }

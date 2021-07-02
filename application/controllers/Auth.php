@@ -19,9 +19,10 @@ class Auth extends CI_Controller
         if ($this->form_validation->run()) {
             $this->_login();
         } else {
-            $this->load->view('auth/_partial/header');
-            $this->load->view('auth/login');
-            $this->load->view('auth/_partial/footer');
+            // $this->load->view('auth/_partial/header');
+            // $this->load->view('auth/login');
+            // $this->load->view('auth/_partial/footer');
+            $this->_view('login');
         }
     }
 
@@ -51,7 +52,7 @@ class Auth extends CI_Controller
             $this->user->save();
             $this->session->set_flashdata(
                 'message',
-                '<div class="alert alert-success rounded-pill" role="alert">
+                '<div class="alert alert-success rounded-0" role="alert">
                     Congratulation! your account has been created.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -61,9 +62,10 @@ class Auth extends CI_Controller
             redirect('login');
         } else {
             // echo 'salah';
-            $this->load->view('auth/_partial/header');
-            $this->load->view('auth/register');
-            $this->load->view('auth/_partial/footer');
+            // $this->load->view('auth/_partial/header');
+            // $this->load->view('auth/register');
+            // $this->load->view('auth/_partial/footer');
+            $this->_view('register');
         }
     }
 
@@ -94,7 +96,7 @@ class Auth extends CI_Controller
                 } else {
                     $this->session->set_flashdata(
                         'message',
-                        '<div class="alert alert-danger rounded-pill" role="alert">
+                        '<div class="alert alert-danger rounded-0" role="alert">
                         Wrong password!
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -106,7 +108,7 @@ class Auth extends CI_Controller
             } else {
                 $this->session->set_flashdata(
                     'message',
-                    '<div class="alert alert-danger rounded-pill" role="alert">
+                    '<div class="alert alert-danger rounded-0" role="alert">
                     This email has not been activated!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -118,7 +120,7 @@ class Auth extends CI_Controller
         } else {
             $this->session->set_flashdata(
                 'message',
-                '<div class="alert alert-danger rounded-pill" role="alert">
+                '<div class="alert alert-danger rounded-0" role="alert">
                     This email is not registered!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -136,7 +138,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('role');;
         $this->session->set_flashdata(
             'message',
-            '<div class="alert alert-danger rounded-pill" role="alert">
+            '<div class="alert alert-danger rounded-0" role="alert">
                 You have been logged out!
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -150,5 +152,18 @@ class Auth extends CI_Controller
     {
         $data['role'] = $this->session->userdata('role');
         $this->load->view('auth/blocked', $data);
+    }
+
+    private function _view($page, $data = null)
+    {
+
+        $email              = $this->session->userdata('email');
+        $data['user']       = $this->db->get_where('users', ['email' => $email])->row_array();
+        $data['site']       = $this->config_model->get();
+
+        $this->load->view('_partials/header', $data);
+        $this->load->view('_partials/navbar', $data);
+        $this->load->view('auth/' . $page, $data);
+        $this->load->view('_partials/footer', $data);
     }
 }

@@ -19,6 +19,7 @@
         </div>
         <div class="card-body">
             <form action="<?= site_url('admin/users/add'); ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="password" value="">
                 <div class="form-group">
                     <label for="full_name">Name*</label>
                     <input class="form-control <?= form_error('full_name') ? 'is-invalid' : '' ?>" type="text" name="full_name" placeholder="Full Name" value="<?= set_value('full_name'); ?>" />

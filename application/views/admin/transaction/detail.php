@@ -31,8 +31,8 @@
                         <th><?= $trx['id_trx']; ?></th>
                     </tr>
                     <tr>
-                        <td>Shipping Code </td>
-                        <td><?= $trx['kode_resi']; ?></td>
+                        <th>Shipping Code </th>
+                        <th><?= $trx['kode_resi']; ?></th>
                     </tr>
                     <tr>
                         <td>Date </td>

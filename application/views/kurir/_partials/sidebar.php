@@ -19,10 +19,10 @@
             <span>Dashboard</span></a>
     </li>
 
-    <li class="nav-item <?= $this->uri->segment(2) == 'delivery' ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('kurir/delivery'); ?>">
-            <i class="fas fa-fw fa-dolly_flatbed"></i>
-            <span>Delivery Order</span></a>
+    <li class="nav-item <?= $this->uri->segment(2) == 'shipping' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('kurir/shipping'); ?>">
+            <i class="fas fa-fw fa-dolly-flatbed"></i>
+            <span>Shipping</span></a>
     </li>
 
     <!-- Divider -->

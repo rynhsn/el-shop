@@ -1,52 +1,52 @@
-<div class="container">
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="<?= base_url(); ?>"><i class="fa fa-home"></i> Home</a>
+                    <span><?= ucfirst($this->uri->segment(1)); ?></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Form Section Begin -->
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
 
-        <div class="col-xl-6 col-lg-7 col-md-7">
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <?= $this->session->flashdata('message'); ?>
+                    <h2>Login</h2>
+                    <form method="post" action="<?= base_url('login'); ?>">
+                        <div class="group-input">
+                            <label for="email">Email address *</label>
+                            <input type="text" id="email" name="email" value="<?= set_value('email'); ?>">
+                            <?= form_error('email') ?>
+                        </div>
+                        <div class="group-input">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password">
+                            <?= form_error('password') ?>
+                        </div>
+                        <div class="group-input gi-check">
+                            <div class="gi-more">
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="col-lg">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
-                                </div>
-                                <?= $this->session->flashdata('message'); ?>
-                                <form class="user" method="post" action="<?= base_url('login'); ?>">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user <?= form_error('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Enter Email Address..." value="<?= set_value('email'); ?>">
-                                        <div class="invalid-feedback">
-                                            <?= form_error('email') ?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id=" password" name="password" placeholder="Password">
-                                        <div class="invalid-feedback">
-                                            <?= form_error('password') ?>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-success btn-user btn-block">
-                                        Login
-                                    </button>
-                                </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="<?= base_url('register'); ?>">Create an Account!</a>
-                                </div>
+                                <a href="#" class="forget-pass">Forget your Password</a>
                             </div>
                         </div>
+                        <button type="submit" class="site-btn login-btn">Sign In</button>
+                    </form>
+                    <div class="switch-login">
+                        <a href="<?= base_url('register'); ?>" class="or-login">Or Create An Account</a>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
+<!-- Register Form Section End -->

@@ -13,9 +13,6 @@
     <?php endif; ?>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/transactions/add') ?>"><i class="fas fa-plus"></i> Add New</a>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -58,14 +55,11 @@
                                     </div>
                                     <br>
                                     <div class="btn-group mt-1">
-                                        <a href="<?= base_url('admin/transactions/pdf/') . $transaction['id_trx']; ?>" class="btn btn-danger btn-circle btn-sm text-sm">
+                                        <a href="<?= base_url('admin/transactions/pdf/') . $transaction['id_trx']; ?>" class="btn btn-danger btn-circle btn-sm text-sm" target="_blank">
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
-                                        <a href="<?= base_url('admin/transactions/resi/') . $transaction['id_trx']; ?>" class="btn btn-success btn-circle btn-sm text-sm">
+                                        <a href="<?= base_url('admin/transactions/resi/') . $transaction['id_trx']; ?>" class="btn btn-info btn-circle btn-sm text-sm" target="_blank">
                                             <i class="fas fa-file-invoice"></i>
-                                        </a>
-                                        <a href="<?= base_url('admin/transactions/word/') . $transaction['id_trx']; ?>" class="btn btn-primary btn-circle btn-sm text-sm">
-                                            <i class="fas fa-file-word"></i>
                                         </a>
                                     </div>
                                 </td>

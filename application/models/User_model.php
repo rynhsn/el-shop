@@ -75,9 +75,13 @@ class User_model extends CI_Model
         $this->email = htmlspecialchars($post['email']);
         $this->role = htmlspecialchars($post['role']);
         $this->image;
-        $this->password = password_hash($this->role, PASSWORD_DEFAULT);
+        if ($this->input->post('password') == '') {
+            $this->password = password_hash($this->role, PASSWORD_DEFAULT);
+        } else {
+            $this->password = password_hash($post['password'], PASSWORD_DEFAULT);
+        }
         $this->is_active = 1;
-        $this->date_created = now();
+        $this->date_created = date('d-m-Y');
         return $this->db->insert($this->_table, $this);
     }
 

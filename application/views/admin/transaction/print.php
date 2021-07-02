@@ -90,8 +90,8 @@
                 <th><?= $trx['id_trx']; ?></th>
             </tr>
             <tr>
-                <td>Shipping Code </td>
-                <td><?= $trx['kode_resi']; ?></td>
+                <th>Shipping Code </th>
+                <th><?= $trx['kode_resi']; ?></th>
             </tr>
             <tr>
                 <td>Date </td>
@@ -147,8 +147,8 @@
                         <?= $transaction['product_id']; ?>
                     </td>
                     <td><?= $transaction['name']; ?></td>
-                    <td><?= $transaction['qty']; ?></td>
                     <td><?= "Rp " . number_format($transaction['price'], 0, ',', '.'); ?></td>
+                    <td><?= $transaction['qty']; ?></td>
                     <td><?= "Rp " . number_format($transaction['sub_total'], 0, ',', '.'); ?></td>
                 </tr>
             <?php endforeach; ?>

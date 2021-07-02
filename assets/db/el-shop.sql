@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 02, 2021 at 12:14 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: Jul 02, 2021 at 11:52 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -300,10 +300,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `full_name`, `username`, `email`, `password`, `image`, `role`, `is_active`, `date_created`, `last_login`, `update_at`, `jk`, `tgl_lahir`, `kecamatan`, `kab_kota`, `prov`, `kode_pos`, `alamat_lengkap`, `no_hp`) VALUES
-('60d53d3f1bad9', 'Kurir', 'kurir', 'kurir@el-shop.com', '$2y$10$HXi.4fzOAtNmMdNWdAkrVuxRrMbQ7A4HMSoYSRVwMaRsZvZryYuBC', 'user.jpg', 'kurir', 1, '2021-06-25 02:29:24', '2021-07-02 08:46:23', '2021-07-02 08:46:23', 'Laki-laki', '2000-12-05', 'Serang', 'Serang', 'Banten', '41724', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081525464568'),
-('60d53e86832cf', 'Administrator', 'admin', 'admin@el-shop.com', '$2y$10$8441g3jVVcmvuhk7XaSdJuXRoA7b/88syBqbty7BGMOQgF7cGdrsq', 'user.jpg', 'admin', 1, '2021-06-25 02:29:28', '2021-07-02 09:20:32', '2021-07-02 09:20:32', 'Laki-laki', '2021-06-02', 'Curug', 'Serang', 'Banten', '42715', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081521234568'),
-('60d5494f78642', 'Member', 'member', 'member@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', '60d5494f78642.jpg', 'member', 1, '2021-06-25 03:11:11', '2021-07-02 09:13:12', '2021-07-02 09:13:12', 'Laki-laki', '1999-01-01', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081258964568'),
-('60d54cc06f459', 'Member', 'member1', 'member1@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', 'user.jpg', 'member', 0, '2021-06-25 03:25:52', '2021-06-25 03:25:52', '2021-06-26 22:24:23', 'Perempuan', '2000-12-12', 'Curug', 'Serang', 'Banten', '41725', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081456982574');
+('60d53d3f1bad9', 'Ego Ilham', 'kurir', 'kurir@el-shop.com', '$2y$10$HXi.4fzOAtNmMdNWdAkrVuxRrMbQ7A4HMSoYSRVwMaRsZvZryYuBC', '60d53d3f1bad9.png', 'kurir', 1, '2021-06-25 02:29:24', '2021-07-02 20:53:09', '2021-07-02 20:55:12', 'Laki-laki', '2000-12-05', 'Pontang', 'Serang', 'Banten', '41724', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081525464568'),
+('60d53e86832cf', 'Administrator', 'admin', 'admin@el-shop.com', '$2y$10$8441g3jVVcmvuhk7XaSdJuXRoA7b/88syBqbty7BGMOQgF7cGdrsq', '60d53e86832cf.jpg', 'admin', 1, '2021-06-25 02:29:28', '2021-07-02 21:22:29', '2021-07-02 21:22:29', 'Perempuan', '2021-06-02', 'Curug', 'Serang', 'Banten', '42715', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081521234568'),
+('60d5494f78642', 'Member', 'member', 'member@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', '60d5494f78642.jpg', 'member', 1, '2021-06-25 03:11:11', '2021-07-02 20:48:18', '2021-07-02 20:48:18', 'Laki-laki', '1999-01-01', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081258964568'),
+('60d54cc06f459', 'Member', 'member1', 'member1@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', 'user.jpg', 'member', 0, '2021-06-25 03:25:52', '2021-06-25 03:25:52', '2021-06-26 22:24:23', 'Perempuan', '2000-12-12', 'Curug', 'Serang', 'Banten', '41725', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081456982574'),
+('60df7efb65cc2', 'Ahmad Soleh', 'member', 'soleh@gmail.com', '$2y$10$tSUS5.P4amzywztDRBBYK.35pu4UwpioX6klOlvJSMFvBjxfln0h6', 'user.jpg', 'member', 1, '0000-00-00 00:00:00', '2021-07-02 21:02:56', '2021-07-02 21:02:56', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+('60df7f2949eb5', 'Daman Huri', 'damanhuri', 'daman@gmail.com', '$2y$10$48s3.In5gdRrSuVYXHOft.k8eg7DGE3IEp/BVrTJi1TScP8WbMRHO', 'user.jpg', 'kurir', 1, '0000-00-00 00:00:00', '2021-07-02 21:04:07', '2021-07-02 21:04:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+('60df88f3f1f69', 'Dede', 'member', 'dede@gmail.com', '$2y$10$zFUP9CdeQ5Z1hsIwHYdfhOApk6Ox8ELhpRLEDyeKsz8qCjhrfOWCa', 'user.jpg', 'member', 1, '0000-00-00 00:00:00', '2021-07-02 21:45:43', '2021-07-02 21:45:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '');
 
 --
 -- Indexes for dumped tables

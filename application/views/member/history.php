@@ -22,8 +22,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <?php if ($this->session->flashdata('message')) : ?>
-                            <div class="alert alert-warning">
+                            <div class="alert alert-success rounded-0">
                                 <?= $this->session->flashdata('message'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                         <?php endif; ?>
                         <div class="cart-table">
@@ -54,7 +57,7 @@
                                             <td class="qua-col first-row"><?= $item['total_item']; ?></td>
                                             <td class="qua-col first-row"><?= $item['status_trx']; ?></td>
                                             <?php if ($item['status_trx'] == 'Arrived') : ?>
-                                                <td class="qua-col first-row"><a href="" class="site-btn confirm">Confirm</a></td>
+                                                <td class="qua-col first-row"><a href="<?= base_url('member/accept/' . $item['id_trx']); ?>" class="site-btn confirm">Confirm</a></td>
                                             <?php elseif ($item['status_trx'] == 'Waiting Payment') : ?>
                                                 <td class="qua-col first-row"><a href="<?= base_url('member/payout/' . $item['id_trx']); ?>" class="site-btn payout">Payout</a></td>
                                             <?php endif; ?>

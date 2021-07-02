@@ -79,6 +79,7 @@ $route['kurir'] = 'kurir/overview';
 $route['member'] = 'member/overview';
 $route['member/history'] = 'member/overview/history';
 $route['member/history/(:any)'] = 'member/overview/history/$1';
+$route['member/accept/(:any)'] = 'member/overview/accept/$1';
 $route['member/profile'] = 'member/overview/profile';
 $route['member/payout'] = 'member/overview/payout';
 $route['member/payout/(:any)'] = 'member/overview/payout/$1';

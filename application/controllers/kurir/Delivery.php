@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Overview extends CI_Controller
+class Delivery extends CI_Controller
 {
     public function __construct()
     {
@@ -27,6 +27,20 @@ class Overview extends CI_Controller
         $email = $this->session->userdata('email');
         $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
 
-        $this->_view('overview', $data);
+        $data['transactions'] = $this->checkout->getWhere('status_trx', 'Delivery')->result_array();
+
+
+        $this->_view('delivery', $data);
+    }
+
+    public function finish($param)
+    {
+        if (!$param) redirect('kurir/delivery');
+
+        $this->status_trx = 'Arrived';
+        $this->db->update('checkout', $this, array('id_trx' => $param));
+
+        $this->session->set_flashdata('message', 'Berhasil, Pesanan telah sampai di tujuan!');
+        redirect('kurir/delivery');
     }
 }

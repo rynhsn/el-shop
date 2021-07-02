@@ -52,6 +52,11 @@ class Checkout_model extends CI_Model
     {
         return [
             [
+                'field' => 'pay_date',
+                'label' => 'Date',
+                'rules' => 'trim|required'
+            ],
+            [
                 'field' => 'bank_pelanggan',
                 'label' => 'Bank Name',
                 'rules' => 'trim|required'
@@ -96,19 +101,25 @@ class Checkout_model extends CI_Model
         $this->id_trx = $id;
         $this->status_trx = 'Waiting for Confirmation';
         $this->status_bayar = 1;
+        $this->pay_date = $post['pay_date'];
         $this->bank_pelanggan = $post['bank_pelanggan'];
         $this->rekening_pelanggan = $post['rekening_pelanggan'];
         $this->rekening_pembayaran = $post['rekening_pembayaran'];
         $this->bukti_bayar = $this->_uploadImage();
+        $this->_thumbnail();
 
-        $this->db->where('id_trx', $id);
-        return $this->db->update($this->_table);
+        // $this->db->where('id_trx', $id);
+        return $this->db->update($this->_table, $this, array('id_trx' => $id));
     }
 
     public function get()
     {
-        $this->db->select('*');
+        $this->db->select('checkout.*,
+        users.full_name, COUNT(checkout_detail.qty) AS total_item');
         $this->db->from($this->_table);
+        $this->db->join('checkout_detail', 'checkout_detail.trx_id = checkout.id_trx', 'left');
+        $this->db->join('users', 'users.id_user = checkout.user_id', 'left');
+        $this->db->group_by('id');
         $this->db->order_by('id', 'desc');
         return $this->db->get()->result_array();
     }
@@ -135,7 +146,7 @@ class Checkout_model extends CI_Model
 
     private function _uploadImage()
     {
-        $config['upload_path']          = './assets/img/products/';
+        $config['upload_path']          = './assets/img/transactions/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->id_trx;
         $config['overwrite']            = true;
@@ -148,5 +159,26 @@ class Checkout_model extends CI_Model
         }
 
         return null;
+    }
+
+    private function _thumbnail()
+    {
+        $thumbs = array('upload_thumb' => $this->upload->data());
+
+
+        $config['image_library']    = 'gd2';
+        $config['source_image']     = './assets/img/transactions/' . $thumbs['upload_thumb']['file_name'];
+
+        // lokasi thumbnail
+        $config['new_image']        = './assets/img/transactions/thumbs/';
+        $config['create_thumb']     = TRUE;
+        $config['maintain_ratio']   = TRUE;
+        $config['width']            = 250;
+        $config['height']           = 250;
+        $config['thumb_marker']     = '';
+
+        $this->load->library('image_lib', $config);
+
+        $this->image_lib->resize();
     }
 }

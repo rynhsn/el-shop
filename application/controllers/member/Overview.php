@@ -83,13 +83,24 @@ class Overview extends CI_Controller
 
             $this->checkout->update($param);
 
-            $this->session->set_flashdata('message', 'Your profile has been update.');
-            redirect('member/profile');
+            $this->session->set_flashdata('message', 'Thank you, we will process your order soon.');
+            redirect('member/history');
         }
 
         var_dump($this->input->post());
         // die;
         $this->_view('payout', $data);
+    }
+
+    public function accept($param)
+    {
+        if (!$param) redirect('member/history');
+
+        $this->status_trx = 'Success';
+        $this->db->update('checkout', $this, array('id_trx' => $param));
+
+        $this->session->set_flashdata('message', 'Order has been received, happy shopping :)');
+        redirect('member/history');
     }
 
     public function _view($page, $data)

@@ -115,7 +115,7 @@ class Products extends CI_Controller
         $this->_view('images', $data);
     }
 
-    public function delimage($id = null, $id_product)
+    public function delimage($id = null, $id_product = null)
     {
         if (!isset($id)) show_404();
 

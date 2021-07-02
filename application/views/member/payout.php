@@ -43,9 +43,9 @@
             <div class="col-lg-12 ml-3">
                 <form action="<?= base_url('member/payout/' . $trx['id_trx']); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
-                        <label for="id_acc" class="col-sm-3 col-form-label">Pay to account</label>
+                        <label for="acc_id" class="col-sm-3 col-form-label">Pay to account</label>
                         <div class="col-sm-9">
-                            <select class="rounded-0 form-control" id="id_acc" name="id_acc">
+                            <select class="rounded-0 form-control" id="acc_id" name="acc_id">
                                 <?php foreach ($accounts as $account) : ?>
                                     <option value="<?= $account['id_acc']; ?>" <?= set_value('acc_id') == $account['acc_num'] ? 'selected' : ''; ?>><?= $account['bank_name']; ?> (Account number : <?= $account['acc_num']; ?> aka <?= $account['owner_name']; ?>)</option>
                                 <?php endforeach; ?>
@@ -56,7 +56,10 @@
                     <div class="form-group row">
                         <label for="pay_date" class="col-sm-3 col-form-label">Date</label>
                         <div class="col-sm-9">
-                            <input type="date" class="rounded-0 form-control" name="pay_date" id="pay_date" placeholder="Date" value="<?= set_value('pay_date'); ?>">
+                            <input type="date" class="rounded-0 form-control <?= form_error('pay_date') ? 'is-invalid' : '' ?>" name="pay_date" id="pay_date" placeholder="Date" value="<?= set_value('pay_date'); ?>">
+                            <div class="invalid-feedback">
+                                <?= form_error('pay_date') ?>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">

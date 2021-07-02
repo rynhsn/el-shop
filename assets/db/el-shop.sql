@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 30, 2021 at 12:28 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Host: localhost
+-- Generation Time: Jul 02, 2021 at 12:14 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `el-shop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE `accounts` (
+  `id_acc` int(11) NOT NULL,
+  `bank_name` varchar(64) NOT NULL,
+  `acc_num` varchar(64) NOT NULL,
+  `owner_name` varchar(64) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `is_active` enum('1','0') NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id_acc`, `bank_name`, `acc_num`, `owner_name`, `image`, `is_active`, `date_created`) VALUES
+(1, 'BCA', '652 712 712', 'RIYAN HUSEN', 'default.jpg', '1', '2021-07-01 08:11:47'),
+(2, 'MANDIRI', '61231 12372 1234', 'RIYAN HUSEN', 'default.jpg', '1', '2021-07-01 08:12:26');
 
 -- --------------------------------------------------------
 
@@ -93,17 +117,38 @@ INSERT INTO `categories` (`id_category`, `category`, `category_slug`, `sort`, `u
 --
 
 CREATE TABLE `checkout` (
+  `id` int(11) NOT NULL,
   `id_trx` varchar(64) NOT NULL,
   `user_id` varchar(64) NOT NULL,
   `alamat_id` varchar(64) NOT NULL,
+  `nama_penerima` varchar(64) NOT NULL,
+  `no_hp_penerima` varchar(20) NOT NULL,
+  `kecamatan` varchar(32) NOT NULL,
+  `kab_kota` varchar(32) NOT NULL,
+  `prov` varchar(32) NOT NULL,
+  `kode_pos` varchar(16) NOT NULL,
+  `alamat_lengkap` text NOT NULL,
   `tgl_trx` date NOT NULL,
   `total` double NOT NULL,
   `status_bayar` varchar(32) NOT NULL,
+  `status_trx` enum('Waiting Payment','In Proccess','Delivery','Arrived','Success','Waiting for Confirmation') NOT NULL,
   `rekening_pembayaran` varchar(255) DEFAULT NULL,
   `rekening_pelanggan` varchar(255) DEFAULT NULL,
   `bukti_bayar` varchar(255) DEFAULT NULL,
+  `acc_id` int(11) DEFAULT NULL,
+  `pay_date` varchar(32) DEFAULT NULL,
+  `bank_pelanggan` varchar(32) DEFAULT NULL,
+  `kode_resi` varchar(64) DEFAULT NULL,
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checkout`
+--
+
+INSERT INTO `checkout` (`id`, `id_trx`, `user_id`, `alamat_id`, `nama_penerima`, `no_hp_penerima`, `kecamatan`, `kab_kota`, `prov`, `kode_pos`, `alamat_lengkap`, `tgl_trx`, `total`, `status_bayar`, `status_trx`, `rekening_pembayaran`, `rekening_pelanggan`, `bukti_bayar`, `acc_id`, `pay_date`, `bank_pelanggan`, `kode_resi`, `update_at`) VALUES
+(6, 'TRX01072021MKSHCF7S', '60d5494f78642', '', 'Member', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-01', 45040000, '1', 'Success', '42345623746', 'Riyan', 'TRX01072021MKSHCF7S.jpg', 1, '2021-07-01', 'BRI', '02072021Z0K42A', '2021-07-02 09:20:07'),
+(7, 'TRX02072021Y7CEISAE', '60d5494f78642', '', 'Member', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-02', 27500000, '0', 'Waiting Payment', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-02 08:18:36');
 
 -- --------------------------------------------------------
 
@@ -112,13 +157,25 @@ CREATE TABLE `checkout` (
 --
 
 CREATE TABLE `checkout_detail` (
-  `id_detail_trx` varchar(64) NOT NULL,
+  `id_detail_trx` int(11) NOT NULL,
   `trx_id` varchar(64) NOT NULL,
   `product_id` varchar(64) NOT NULL,
+  `price` double NOT NULL,
   `qty` int(11) NOT NULL,
   `sub_total` double NOT NULL,
   `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checkout_detail`
+--
+
+INSERT INTO `checkout_detail` (`id_detail_trx`, `trx_id`, `product_id`, `price`, `qty`, `sub_total`, `update_at`) VALUES
+(5, 'TRX01072021MKSHCF7S', 'PRO008', 12500000, 3, 37500000, '2021-07-01 09:17:26'),
+(6, 'TRX01072021MKSHCF7S', 'PRO007', 2500000, 2, 5000000, '2021-07-01 09:17:26'),
+(7, 'TRX01072021MKSHCF7S', 'PRO006', 2540000, 1, 2540000, '2021-07-01 09:17:26'),
+(8, 'TRX02072021Y7CEISAE', 'PRO008', 12500000, 2, 25000000, '2021-07-02 08:18:36'),
+(9, 'TRX02072021Y7CEISAE', 'PRO007', 2500000, 1, 2500000, '2021-07-02 08:18:36');
 
 -- --------------------------------------------------------
 
@@ -208,8 +265,7 @@ CREATE TABLE `product_images` (
 INSERT INTO `product_images` (`id_image`, `product_id`, `image_title`, `image`, `update_at`) VALUES
 ('60d9942818430', 'PRO002', 'Gambar 1', '60d9942818430.jpg', '2021-06-29 18:07:32'),
 ('60d99b09e9177', 'PRO002', 'Gambar 2', '60d99b09e9177.jpg', '2021-06-29 18:07:29'),
-('60d99b163b1d7', 'PRO002', 'Gambar 1', '60d99b163b1d7.jpg', '2021-06-28 09:49:10'),
-('60d99b1ab013a', 'PRO002', 'Gambar 2', '60d99b1ab013a.jpg', '2021-06-28 09:49:14');
+('60d99b163b1d7', 'PRO002', 'Gambar 1', '60d99b163b1d7.jpg', '2021-06-28 09:49:10');
 
 -- --------------------------------------------------------
 
@@ -244,14 +300,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `full_name`, `username`, `email`, `password`, `image`, `role`, `is_active`, `date_created`, `last_login`, `update_at`, `jk`, `tgl_lahir`, `kecamatan`, `kab_kota`, `prov`, `kode_pos`, `alamat_lengkap`, `no_hp`) VALUES
-('60d53d3f1bad9', 'Kurir', 'kurir', 'kurir@el-shop.com', '$2y$10$HXi.4fzOAtNmMdNWdAkrVuxRrMbQ7A4HMSoYSRVwMaRsZvZryYuBC', 'user.jpg', 'kurir', 1, '2021-06-25 02:29:24', '2021-06-25 02:29:34', '2021-06-26 22:24:23', 'Laki-laki', '2000-12-05', 'Serang', 'Serang', 'Banten', '41724', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081525464568'),
-('60d53e86832cf', 'Administrator', 'admin', 'admin@el-shop.com', '$2y$10$8441g3jVVcmvuhk7XaSdJuXRoA7b/88syBqbty7BGMOQgF7cGdrsq', 'user.jpg', 'admin', 1, '2021-06-25 02:29:28', '2021-06-30 10:23:35', '2021-06-30 10:23:35', 'Laki-laki', '2021-06-02', 'Curug', 'Serang', 'Banten', '42715', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081521234568'),
-('60d5494f78642', 'Member', 'member', 'member@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', 'user.jpg', 'member', 1, '2021-06-25 03:11:11', '2021-06-30 10:18:05', '2021-06-30 10:18:05', 'Laki-laki', '1999-01-01', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081258964568'),
+('60d53d3f1bad9', 'Kurir', 'kurir', 'kurir@el-shop.com', '$2y$10$HXi.4fzOAtNmMdNWdAkrVuxRrMbQ7A4HMSoYSRVwMaRsZvZryYuBC', 'user.jpg', 'kurir', 1, '2021-06-25 02:29:24', '2021-07-02 08:46:23', '2021-07-02 08:46:23', 'Laki-laki', '2000-12-05', 'Serang', 'Serang', 'Banten', '41724', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081525464568'),
+('60d53e86832cf', 'Administrator', 'admin', 'admin@el-shop.com', '$2y$10$8441g3jVVcmvuhk7XaSdJuXRoA7b/88syBqbty7BGMOQgF7cGdrsq', 'user.jpg', 'admin', 1, '2021-06-25 02:29:28', '2021-07-02 09:20:32', '2021-07-02 09:20:32', 'Laki-laki', '2021-06-02', 'Curug', 'Serang', 'Banten', '42715', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081521234568'),
+('60d5494f78642', 'Member', 'member', 'member@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', '60d5494f78642.jpg', 'member', 1, '2021-06-25 03:11:11', '2021-07-02 09:13:12', '2021-07-02 09:13:12', 'Laki-laki', '1999-01-01', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081258964568'),
 ('60d54cc06f459', 'Member', 'member1', 'member1@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', 'user.jpg', 'member', 0, '2021-06-25 03:25:52', '2021-06-25 03:25:52', '2021-06-26 22:24:23', 'Perempuan', '2000-12-12', 'Curug', 'Serang', 'Banten', '41725', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081456982574');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`id_acc`);
 
 --
 -- Indexes for table `alamat_pengiriman`
@@ -270,6 +332,18 @@ ALTER TABLE `berita`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_category`);
+
+--
+-- Indexes for table `checkout`
+--
+ALTER TABLE `checkout`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `checkout_detail`
+--
+ALTER TABLE `checkout_detail`
+  ADD PRIMARY KEY (`id_detail_trx`);
 
 --
 -- Indexes for table `config`
@@ -300,10 +374,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `id_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `checkout`
+--
+ALTER TABLE `checkout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `checkout_detail`
+--
+ALTER TABLE `checkout_detail`
+  MODIFY `id_detail_trx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

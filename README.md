@@ -13,9 +13,13 @@ ADMIN PAGE
 - Kelola Produk
 - Kelola Kategori Produk
 - Kelola Konfigurasi Website
+- Kelola pesanan
 
 Member
 - Index
+- Check out
+- Edit profile
+- Confirm order
 
 VISITOR
 - Frontend
@@ -30,18 +34,14 @@ BELUM
 
 ADMIN
 - Dashboard
-- Kelola pesanan
 - Explode email, ambil string pada array pertama untuk dijadikan sebagai username.
 
 KURIR
 - Semua fungsi
 
 MEMBER
-- Check out
-- Edit profile
 - Edit password
 - Tracking order
-- Confirm order
 
 VISITOR
 - Blog
@@ -53,6 +53,6 @@ VISITOR
 AKUN
 --------
 Email & Pwd
-admin@el-shop.com & admin
-member@el-shop.com & member
-kurir@el-shop.com &kurir
+- admin@el-shop.com & admin
+- member@el-shop.com & member
+- kurir@el-shop.com & kurir

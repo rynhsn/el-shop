@@ -11,6 +11,7 @@ class Transactions extends CI_Controller
         $this->load->model('checkout_model', 'checkout');
         $this->load->model('checkout_detail_model', 'checkout_detail');
         $this->load->model('account_model', 'account');
+        // $this->load->model('config_model', 'config');
         $this->load->helper('string');
 
         is_logged_in();
@@ -43,8 +44,76 @@ class Transactions extends CI_Controller
         $data['brainware'] = $this->db->get_where('users', ['email' => $email])->row_array();
         $data['trx'] = $this->checkout->getById($param);
         $data['transactions'] = $this->checkout_detail->getWhere($param);
+        $data['account'] = $this->account->getById($data['trx']['acc_id']);
 
         $this->_view('detail', $data);
+    }
+
+    public function print($param)
+    {
+        $email = $this->session->userdata('email');
+        $data['brainware']  = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $data['site']       = $this->config_model->get();
+
+        $data['trx']        = $this->checkout->getById($param);
+        $data['transactions'] = $this->checkout_detail->getWhere($param);
+        $data['account']    = $this->account->getById($data['trx']['acc_id']);
+
+        $this->load->view('admin/transaction/print', $data);
+    }
+
+    public function pdf($param)
+    {
+        $email = $this->session->userdata('email');
+        $data['brainware']  = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $data['site']       = $this->config_model->get();
+
+        $data['trx']        = $this->checkout->getById($param);
+        $data['transactions'] = $this->checkout_detail->getWhere($param);
+        $data['account']    = $this->account->getById($data['trx']['acc_id']);
+
+        $html = $this->load->view('admin/transaction/print', $data, true);
+        $mpdf = new \Mpdf\Mpdf();
+        // Write some HTML code:
+        $mpdf->WriteHTML($html);
+        // Output a PDF file directly to the browser
+        $mpdf->Output();
+    }
+
+    public function resi($param)
+    {
+        $email = $this->session->userdata('email');
+        $data['brainware']  = $this->db->get_where('users', ['email' => $email])->row_array();
+
+        $data['site']       = $this->config_model->get();
+
+        $data['trx']        = $this->checkout->getById($param);
+        $data['transactions'] = $this->checkout_detail->getWhere($param);
+        $data['account']    = $this->account->getById($data['trx']['acc_id']);
+
+        $html = $this->load->view('admin/transaction/resi', $data, true);
+        // load
+        $mpdf = new \Mpdf\Mpdf();
+        // header
+        $mpdf->SetHTMLHeader('
+            <div style="text-align: left; font-weight: bold;">
+                <img src="' . base_url('assets/img/' . $data['site']['logo']) . '" style="height:50px; width:auto;">
+            </div>');
+        // footer
+        $mpdf->SetHTMLFooter('
+            <div style="padding:10px 20px; background-color:gray; color:white; font-size:12px;">
+                Address ' . $data['site']['site_name'] . '(' . $data['site']['address'] . ') 
+                <br> 
+                Phone ' . $data['site']['phone'] . '
+            </div>');
+        // Write some HTML code:
+        $mpdf->WriteHTML($html);
+
+        $file_name = url_title($data['site']['website'], 'dash', 'true') . '-' . $data['trx']['id_trx'];
+        // Output a PDF file directly to the browser
+        $mpdf->Output();
     }
 
     public function proccess($param)

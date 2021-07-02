@@ -51,9 +51,23 @@
                                     <span class="badge badge-pill badge-dark"><?= $transaction['status_trx']; ?></span>
                                 </td>
                                 <td>
-                                    <a href="<?= base_url('admin/transactions/detail/') . $transaction['id_trx']; ?>" class="btn btn-warning btn-circle btn-sm text-sm">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
+                                    <div class="btn-group">
+                                        <a href="<?= base_url('admin/transactions/detail/') . $transaction['id_trx']; ?>" class="btn btn-warning btn-circle btn-sm text-sm">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                    <br>
+                                    <div class="btn-group mt-1">
+                                        <a href="<?= base_url('admin/transactions/pdf/') . $transaction['id_trx']; ?>" class="btn btn-danger btn-circle btn-sm text-sm">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </a>
+                                        <a href="<?= base_url('admin/transactions/resi/') . $transaction['id_trx']; ?>" class="btn btn-success btn-circle btn-sm text-sm">
+                                            <i class="fas fa-file-invoice"></i>
+                                        </a>
+                                        <a href="<?= base_url('admin/transactions/word/') . $transaction['id_trx']; ?>" class="btn btn-primary btn-circle btn-sm text-sm">
+                                            <i class="fas fa-file-word"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

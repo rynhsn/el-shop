@@ -87,8 +87,6 @@ class Overview extends CI_Controller
             redirect('member/history');
         }
 
-        var_dump($this->input->post());
-        // die;
         $this->_view('payout', $data);
     }
 

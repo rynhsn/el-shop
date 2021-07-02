@@ -105,6 +105,7 @@ class Checkout_model extends CI_Model
         $this->bank_pelanggan = $post['bank_pelanggan'];
         $this->rekening_pelanggan = $post['rekening_pelanggan'];
         $this->rekening_pembayaran = $post['rekening_pembayaran'];
+        $this->acc_id = $post['acc_id'];
         $this->bukti_bayar = $this->_uploadImage();
         $this->_thumbnail();
 

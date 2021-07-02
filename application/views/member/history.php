@@ -58,7 +58,7 @@
                                             <td class="qua-col first-row"><?= $item['status_trx']; ?></td>
                                             <?php if ($item['status_trx'] == 'Arrived') : ?>
                                                 <td class="qua-col first-row"><a href="<?= base_url('member/accept/' . $item['id_trx']); ?>" class="site-btn confirm">Confirm</a></td>
-                                            <?php elseif ($item['status_trx'] == 'Waiting Payment') : ?>
+                                            <?php elseif ($item['status_bayar'] == 0) : ?>
                                                 <td class="qua-col first-row"><a href="<?= base_url('member/payout/' . $item['id_trx']); ?>" class="site-btn payout">Payout</a></td>
                                             <?php endif; ?>
                                         </tr>

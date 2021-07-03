@@ -57,6 +57,6 @@ VISITOR
 AKUN
 --------
 Email & Pwd
-- admin@el-shop.com & admin
-- member@el-shop.com & member
-- kurir@el-shop.com & kurir
+- admin@el-shop.com & admin123
+- member@el-shop.com & member123
+- kurir@el-shop.com & kurir123

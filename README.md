@@ -16,12 +16,22 @@ ADMIN PAGE
 - Kelola Kategori Produk
 - Kelola Konfigurasi Website
 - Kelola pesanan
+- Cetak Resi
+- Download PDF per transaksi
+- Cetak Invoice per transaksi
+- Ubah Password
+
+Kurir
+- Daftar pengiriman
+- Profile
+- Ubah Password
 
 Member
 - Index
 - Check out
 - Edit profile
 - Confirm order
+- Ubah Password
 
 VISITOR
 - Frontend
@@ -37,9 +47,6 @@ BELUM
 ADMIN
 - Dashboard
 - Explode email, ambil string pada array pertama untuk dijadikan sebagai username.
-
-KURIR
-- Semua fungsi
 
 MEMBER
 - Edit password

@@ -69,9 +69,11 @@ class User_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
+        $username = explode('@', $post['username']);
+
         $this->id_user = uniqid();
         $this->full_name = htmlspecialchars($post['full_name']);
-        $this->username = htmlspecialchars($post['username']);
+        $this->username = $username[0];
         $this->email = htmlspecialchars($post['email']);
         $this->role = htmlspecialchars($post['role']);
         $this->image;

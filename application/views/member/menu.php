@@ -5,6 +5,7 @@
             <li><a href="<?= base_url('shop/cart'); ?>">Cart</a></li>
             <li><a href="<?= base_url('member/history'); ?>">Order History</a></li>
             <li><a href="<?= base_url('member/profile'); ?>">Profile</a></li>
+            <li><a href="<?= base_url('member/changepassword'); ?>">Change Password</a></li>
             <li><a href="<?= base_url('logout'); ?>">Logout</a></li>
         </ul>
     </div>

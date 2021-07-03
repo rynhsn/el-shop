@@ -71,6 +71,7 @@ $route['contact'] = 'home/contact';
 $route['login'] = 'auth';
 $route['register'] = 'auth/register';
 $route['logout'] = 'auth/logout';
+$route['forgot-password'] = 'auth/forgotPassword';
 $route['blocked'] = 'auth/blocked';
 
 $route['admin'] = 'admin/overview';

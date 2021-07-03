@@ -14,39 +14,28 @@
 <!-- Breadcrumb Form Section Begin -->
 
 
-<!-- Register Section Begin -->
+<!-- Forgot password Section Begin -->
 <div class="register-login-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="login-form">
                     <?= $this->session->flashdata('message'); ?>
-                    <h2>Login</h2>
-                    <form method="post" action="<?= base_url('login'); ?>">
+                    <h2>Forgot Password</h2>
+                    <form method="post" action="<?= base_url('forgot-password'); ?>">
                         <div class="group-input">
                             <label for="email">Email address *</label>
                             <input type="text" id="email" name="email" value="<?= set_value('email'); ?>">
                             <?= form_error('email') ?>
                         </div>
-                        <div class="group-input">
-                            <label for="password">Password *</label>
-                            <input type="password" id="password" name="password">
-                            <?= form_error('password') ?>
-                        </div>
-                        <div class="group-input gi-check">
-                            <div class="gi-more">
-
-                                <a href="<?= base_url('forgot-password'); ?>" class="forget-pass">Forget your Password</a>
-                            </div>
-                        </div>
-                        <button type="submit" class="site-btn login-btn">Sign In</button>
+                        <button type="submit" class="site-btn login-btn">Reset password</button>
                     </form>
                     <div class="switch-login">
-                        <a href="<?= base_url('register'); ?>" class="or-login">Or Create An Account</a>
+                        <a href="<?= base_url('login'); ?>" class="or-login">Back to login</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Register Form Section End -->
+<!-- Forgot password Form Section End -->

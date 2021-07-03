@@ -46,8 +46,7 @@ BELUM
 ------
 
 ADMIN
-- Dashboard
-- Explode email, ambil string pada array pertama untuk dijadikan sebagai username.
+- Report Penjualan
 
 VISITOR
 - Blog

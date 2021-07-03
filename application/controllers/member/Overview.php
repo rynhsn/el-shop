@@ -103,9 +103,8 @@ class Overview extends CI_Controller
 
         if (!$param) redirect($data['user']['role']);
 
-        $data['trx']        = $this->checkout->getById($param);
         $data['accounts']   = $this->account->getAll();
-
+        $data['trx']        = $this->checkout->getById($param);
 
 
         $validation = $this->form_validation;

@@ -13,6 +13,9 @@ class Categories extends CI_Controller
 
     private function _view($page, $data)
     {
+        $data['unconfirm']  = $this->checkout->getWhere('status_trx', 'Waiting for Confirmation')->result_array();
+        $data['proccess']   = $this->checkout->getWhere('status_trx', 'In Proccess')->result_array();
+
         $this->load->view('admin/_partials/head', $data);
         $this->load->view('admin/_partials/sidebar', $data);
         $this->load->view('admin/_partials/navbar', $data);

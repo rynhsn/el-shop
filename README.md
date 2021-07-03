@@ -28,6 +28,7 @@ Kurir
 
 Member
 - Index
+- Adding cart <= stock produk
 - Check out
 - Edit profile
 - Confirm order
@@ -48,14 +49,10 @@ ADMIN
 - Dashboard
 - Explode email, ambil string pada array pertama untuk dijadikan sebagai username.
 
-MEMBER
-- Edit password
-
 VISITOR
 - Blog
 - About
 - Contact
-
 
 --------
 AKUN

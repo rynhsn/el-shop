@@ -51,6 +51,7 @@ class Product_model extends CI_Model
         $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
         $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
         $this->db->where('is_active', 1);
+        $this->db->where('stock >', 0);
         $this->db->group_by('id_product');
         $this->db->limit(12);
         $this->db->order_by('id_product', 'desc');
@@ -64,6 +65,7 @@ class Product_model extends CI_Model
         $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
         $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
         $this->db->where('is_active', 1);
+        $this->db->where('stock >', 0);
         $this->db->where('product_slug', $param);
         $this->db->group_by('id_product');
         $this->db->order_by('id_product', 'desc');
@@ -77,6 +79,7 @@ class Product_model extends CI_Model
         $this->db->join($this->_join, $this->_table . '.category_id = ' . $this->_join . '.id_category', 'left');
         $this->db->join($this->_join1, $this->_table . '.id_product = ' . $this->_join1 . '.product_id', 'left');
         $this->db->where('is_active', 1);
+        $this->db->where('stock >', 0);
         $this->db->group_by('id_product');
         $this->db->limit($limit, $start);
         $this->db->order_by('id_product', 'desc');
@@ -123,6 +126,11 @@ class Product_model extends CI_Model
         $this->db->group_by('category_id');
         $this->db->order_by('id_product', 'desc');
         return $this->db->get()->result_array();
+    }
+
+    public function getWhere($param, $param1)
+    {
+        $this->db->get_where('products', [$param => $param1])->result_array();
     }
 
     public function getAll()

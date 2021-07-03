@@ -144,6 +144,15 @@ class Checkout_model extends CI_Model
         return $this->db->get();
     }
 
+    public function getByDate($param, $param1)
+    {
+        $this->db->select('tgl_trx, total, SUM(total) as jumlah');
+        $this->db->from($this->_table);
+        $this->db->where($param, $param1);
+        $this->db->where('status_trx', 'Success');
+        return $this->db->get()->row_array();
+    }
+
 
     private function _uploadImage()
     {

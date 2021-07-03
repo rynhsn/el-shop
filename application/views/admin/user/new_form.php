@@ -29,8 +29,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Username*</label>
-                    <input class="form-control <?= form_error('username') ? 'is-invalid' : '' ?>" type="text" name="username" placeholder="Username" value="<?= set_value('username'); ?>" />
+                    <!-- <label for="username">Username*</label> -->
+                    <input class="form-control <?= form_error('username') ? 'is-invalid' : '' ?>" type="hidden" name="username" placeholder="Username" value="<?= set_value('username'); ?>" />
                     <div class="invalid-feedback">
                         <?= form_error('username') ?>
                     </div>

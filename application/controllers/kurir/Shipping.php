@@ -10,16 +10,18 @@ class Shipping extends CI_Controller
         is_logged_in();
     }
 
-    private function _view($param, $param1)
+    private function _view($param, $data)
     {
-        $this->load->view('kurir/_partials/head', $param1);
-        $this->load->view('kurir/_partials/sidebar', $param1);
-        $this->load->view('kurir/_partials/navbar', $param1);
-        $this->load->view('kurir/' . $param, $param1);
-        $this->load->view('kurir/_partials/footer', $param1);
-        $this->load->view('kurir/_partials/scrolltop', $param1);
-        $this->load->view('kurir/_partials/modal', $param1);
-        $this->load->view('kurir/_partials/js', $param1);
+        $data['delivery']  = $this->checkout->getWhere('status_trx', 'Delivery')->result_array();
+
+        $this->load->view('kurir/_partials/head', $data);
+        $this->load->view('kurir/_partials/sidebar', $data);
+        $this->load->view('kurir/_partials/navbar', $data);
+        $this->load->view('kurir/' . $param, $data);
+        $this->load->view('kurir/_partials/footer', $data);
+        $this->load->view('kurir/_partials/scrolltop', $data);
+        $this->load->view('kurir/_partials/modal', $data);
+        $this->load->view('kurir/_partials/js', $data);
     }
 
     public function index()

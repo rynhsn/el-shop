@@ -20,6 +20,7 @@ class Cart extends CI_Controller
 
         $this->_view('cart', $data);
     }
+
     public function add($id = null)
     {
         if ($id) {
@@ -38,6 +39,12 @@ class Cart extends CI_Controller
             $name       = $post['name'];
             $image       = $post['image'];
             $redirect_page = $post['redirect_page'];
+
+            $product    = $this->product->getById($id);
+            if ($product['stock'] < $this->input->post('qty')) {
+                $this->session->set_flashdata('message', 'Qty cannot be more than stock.');
+                redirect('shop/detail/' . $product['product_slug']);
+            }
         }
 
         // proses masukkan ke cart

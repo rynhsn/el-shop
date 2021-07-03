@@ -23,11 +23,6 @@ class User_model extends CI_Model
                 'rules' => 'trim|required'
             ],
             [
-                'field' => 'username',
-                'label' => 'Username',
-                'rules' => 'trim|required|is_unique[users.username]'
-            ],
-            [
                 'field' => 'email',
                 'label' => 'Email',
                 'rules' => 'trim|required|is_unique[users.email]'
@@ -69,7 +64,7 @@ class User_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $username = explode('@', $post['username']);
+        $username = explode('@', $post['email']);
 
         $this->id_user = uniqid();
         $this->full_name = htmlspecialchars($post['full_name']);

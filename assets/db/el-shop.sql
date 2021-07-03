@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 11:52 PM
+-- Generation Time: Jul 03, 2021 at 04:12 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -148,7 +148,10 @@ CREATE TABLE `checkout` (
 
 INSERT INTO `checkout` (`id`, `id_trx`, `user_id`, `alamat_id`, `nama_penerima`, `no_hp_penerima`, `kecamatan`, `kab_kota`, `prov`, `kode_pos`, `alamat_lengkap`, `tgl_trx`, `total`, `status_bayar`, `status_trx`, `rekening_pembayaran`, `rekening_pelanggan`, `bukti_bayar`, `acc_id`, `pay_date`, `bank_pelanggan`, `kode_resi`, `update_at`) VALUES
 (6, 'TRX01072021MKSHCF7S', '60d5494f78642', '', 'Member', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-01', 45040000, '1', 'Success', '42345623746', 'Riyan', 'TRX01072021MKSHCF7S.jpg', 1, '2021-07-01', 'BRI', '02072021Z0K42A', '2021-07-02 09:20:07'),
-(7, 'TRX02072021Y7CEISAE', '60d5494f78642', '', 'Member', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-02', 27500000, '0', 'Waiting Payment', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-02 08:18:36');
+(7, 'TRX02072021Y7CEISAE', '60d5494f78642', '', 'Member', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-02', 27500000, '1', 'Success', '463 544 354', 'Yayan', 'TRX02072021Y7CEISAE.png', 2, '2021-07-03', 'BCA', '03072021KWFR0U', '2021-07-03 12:46:18'),
+(8, 'TRX03072021NGTV2QXQ', '60d5494f78642', '', 'Yayan Udyana', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-03', 17540000, '1', 'Waiting for Confirmation', '123456789', 'Yayan', NULL, 1, '2021-07-04', 'BCA', NULL, '2021-07-03 13:58:39'),
+(9, 'TRX03072021COUOWL7D', '60d5494f78642', '', 'Yayan Udyana', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-03', 22500000, '1', 'Delivery', '123456789', 'Yayan', NULL, 1, '2021-07-03', 'BCA', '03072021FARBD0', '2021-07-03 14:11:11'),
+(10, 'TRX03072021YWHABORG', '60d5494f78642', '', 'Yayan Udyana', '081258964568', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '2021-07-03', 52500000, '0', 'Waiting Payment', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-03 13:40:07');
 
 -- --------------------------------------------------------
 
@@ -175,7 +178,14 @@ INSERT INTO `checkout_detail` (`id_detail_trx`, `trx_id`, `product_id`, `price`,
 (6, 'TRX01072021MKSHCF7S', 'PRO007', 2500000, 2, 5000000, '2021-07-01 09:17:26'),
 (7, 'TRX01072021MKSHCF7S', 'PRO006', 2540000, 1, 2540000, '2021-07-01 09:17:26'),
 (8, 'TRX02072021Y7CEISAE', 'PRO008', 12500000, 2, 25000000, '2021-07-02 08:18:36'),
-(9, 'TRX02072021Y7CEISAE', 'PRO007', 2500000, 1, 2500000, '2021-07-02 08:18:36');
+(9, 'TRX02072021Y7CEISAE', 'PRO007', 2500000, 1, 2500000, '2021-07-02 08:18:36'),
+(10, 'TRX03072021NGTV2QXQ', 'PRO008', 12500000, 1, 12500000, '2021-07-03 13:38:22'),
+(11, 'TRX03072021NGTV2QXQ', 'PRO007', 2500000, 1, 2500000, '2021-07-03 13:38:22'),
+(12, 'TRX03072021NGTV2QXQ', 'PRO006', 2540000, 1, 2540000, '2021-07-03 13:38:22'),
+(13, 'TRX03072021COUOWL7D', 'PRO008', 12500000, 1, 12500000, '2021-07-03 13:38:42'),
+(14, 'TRX03072021COUOWL7D', 'PRO007', 2500000, 4, 10000000, '2021-07-03 13:38:42'),
+(15, 'TRX03072021YWHABORG', 'PRO007', 2500000, 1, 2500000, '2021-07-03 13:40:07'),
+(16, 'TRX03072021YWHABORG', 'PRO001', 25000000, 2, 50000000, '2021-07-03 13:40:07');
 
 -- --------------------------------------------------------
 
@@ -235,14 +245,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id_product`, `category_id`, `name`, `product_slug`, `keywords`, `image`, `stock`, `price`, `desc_product`, `is_active`, `weight`, `size`, `date_created`, `update_at`) VALUES
-('PRO001', 1, 'Produk 1', 'produk-1', 'Tag 1, Tag 2, Tag 3', 'PRO001.jpg', 150, 25000000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '', '', '2021-06-28 08:02:05', '2021-06-28 06:02:05'),
+('PRO001', 1, 'Produk 1', 'produk-1', 'Tag 1, Tag 2, Tag 3', 'PRO001.jpg', 10, 25000000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '', '', '2021-06-28 08:02:05', '2021-06-28 06:02:05'),
 ('PRO002', 1, 'Produk 2', 'produk-2', 'sdf', 'PRO002.jpg', 12, 50000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '12 kg', '50x50 cm', '2021-06-28 10:48:04', '2021-06-28 08:48:04'),
 ('PRO003', 1, 'Produk 3', 'produk-3', '', 'PRO003.jpg', 50, 15000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '', '', '2021-06-28 14:15:16', '2021-06-28 12:15:16'),
 ('PRO004', 1, 'Produk 4', 'produk-4', 'Keywords', 'PRO004.jpg', 21, 120000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '', '', '2021-06-28 12:09:46', '2021-06-28 10:09:46'),
 ('PRO005', 1, 'Produk 5', 'produk-5', '', 'PRO005.jpg', 25, 3000000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '20 g', '50x50 cm', '2021-06-28 14:20:21', '2021-06-28 12:20:21'),
 ('PRO006', 2, 'Product 6', 'kategori-6', '', 'PRO006.jpg', 600, 2540000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '50 g', '', '2021-06-28 14:21:40', '2021-06-28 12:21:40'),
-('PRO007', 2, 'Produk 7', 'produk-7', '', 'PRO007.jpg', 250, 2500000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '60 g', '2x2 m', '2021-06-28 14:23:01', '2021-06-28 12:23:01'),
-('PRO008', 3, 'Produk 8', 'produk-8', '', 'PRO008.jpg', 500, 12500000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '', '20x20 cm', '2021-06-28 14:23:42', '2021-06-28 12:23:42');
+('PRO007', 2, 'Produk 7', 'produk-7', '', 'PRO007.jpg', 5, 2500000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '60 g', '2x2 m', '2021-06-28 14:23:01', '2021-06-28 12:23:01'),
+('PRO008', 3, 'Produk 8', 'produk-8', '', 'PRO008.jpg', 7, 12500000, 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti unde aliquam eligendi non, labore error tempora sequi, quidem itaque expedita maiores, nihil veniam odit? Libero nisi iste similique quidem quasi rerum repellendus, totam temporibus sit quod corporis ex magni ipsa aspernatur tempore deleniti dignissimos expedita velit ratione ipsam? Repudiandae ducimus autem consequuntur amet aut dolorum inventore voluptate magni quidem repellat alias blanditiis, temporibus eius enim ut accusamus omnis corrupti accusantium minima veniam laborum voluptatum! Quos, consequuntur consectetur incidunt laudantium, est deleniti, iste sint ipsam quas dolor distinctio cupiditate ad excepturi recusandae. Perspiciatis qui animi quidem labore, veniam aperiam id quod.', '1', '', '20x20 cm', '2021-06-28 14:23:42', '2021-06-28 12:23:42');
 
 -- --------------------------------------------------------
 
@@ -300,13 +310,28 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `full_name`, `username`, `email`, `password`, `image`, `role`, `is_active`, `date_created`, `last_login`, `update_at`, `jk`, `tgl_lahir`, `kecamatan`, `kab_kota`, `prov`, `kode_pos`, `alamat_lengkap`, `no_hp`) VALUES
-('60d53d3f1bad9', 'Ego Ilham', 'kurir', 'kurir@el-shop.com', '$2y$10$HXi.4fzOAtNmMdNWdAkrVuxRrMbQ7A4HMSoYSRVwMaRsZvZryYuBC', '60d53d3f1bad9.png', 'kurir', 1, '2021-06-25 02:29:24', '2021-07-02 20:53:09', '2021-07-02 20:55:12', 'Laki-laki', '2000-12-05', 'Pontang', 'Serang', 'Banten', '41724', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081525464568'),
-('60d53e86832cf', 'Administrator', 'admin', 'admin@el-shop.com', '$2y$10$8441g3jVVcmvuhk7XaSdJuXRoA7b/88syBqbty7BGMOQgF7cGdrsq', '60d53e86832cf.jpg', 'admin', 1, '2021-06-25 02:29:28', '2021-07-02 21:22:29', '2021-07-02 21:22:29', 'Perempuan', '2021-06-02', 'Curug', 'Serang', 'Banten', '42715', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081521234568'),
-('60d5494f78642', 'Member', 'member', 'member@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', '60d5494f78642.jpg', 'member', 1, '2021-06-25 03:11:11', '2021-07-02 20:48:18', '2021-07-02 20:48:18', 'Laki-laki', '1999-01-01', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081258964568'),
+('', 'prisma unbaja', 'juliabahar70', 'juliabahar70@gmail.com', '$2y$10$fFh1Gpn9ksb3XE0YFhvvueE6q/WMiiKbSObJmNyxm3t47gVLyNG9G', 'user.jpg', 'member', 1, '2021-07-03 05:04:55', '2021-07-03 07:10:13', '2021-07-03 07:10:13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+('60d53d3f1bad9', 'Ego Ilham', 'kurir', 'kurir@el-shop.com', '$2y$10$9C7Eiaa.jkclpqW6MbQn0eagtjG3ix02tuDEQUzSYf4qDkP2EY8em', '60d53d3f1bad9.png', 'kurir', 1, '2021-06-25 02:29:24', '2021-07-03 14:11:24', '2021-07-03 14:11:24', 'Laki-laki', '2000-12-05', 'Pontang', 'Serang', 'Banten', '41724', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081525464568'),
+('60d53e86832cf', 'Administrator', 'admin', 'admin@el-shop.com', '$2y$10$ij5kHLtdEkqMtrFdZTMs..ZN7wkmz9iuiFV6olEjEBDN4u2i5zVrS', '60d53e86832cf.jpg', 'admin', 1, '2021-06-25 02:29:28', '2021-07-03 14:03:45', '2021-07-03 14:03:45', 'Perempuan', '2021-06-02', 'Curug', 'Serang', 'Banten', '42715', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081521234568'),
+('60d5494f78642', 'Yayan Udyana', 'member', 'member@el-shop.com', '$2y$10$rtjlw1luqQ3amXvJko3hoOgHqpN0dkkwLOM5PBCdhWfCi/.lTtAPa', '60d5494f78642.jpg', 'member', 1, '2021-06-25 03:11:11', '2021-07-03 12:44:17', '2021-07-03 12:44:17', 'Laki-laki', '1999-01-01', 'Serang', 'Serang', 'Banten', '42781', 'Jl. Raya Pandeglang, KM. 7, Kec. Serang, Kota Serang', '081258964568'),
 ('60d54cc06f459', 'Member', 'member1', 'member1@el-shop.com', '$2y$10$J6gi9dXyb/xjEwhc0wvZJOnpu32EsWUQwj4wJHhhOwSD1b3x.CjNu', 'user.jpg', 'member', 0, '2021-06-25 03:25:52', '2021-06-25 03:25:52', '2021-06-26 22:24:23', 'Perempuan', '2000-12-12', 'Curug', 'Serang', 'Banten', '41725', 'Jl. Raya Pandeglang, KM. 02, Kec. Serang, Kota Serang', '081456982574'),
 ('60df7efb65cc2', 'Ahmad Soleh', 'member', 'soleh@gmail.com', '$2y$10$tSUS5.P4amzywztDRBBYK.35pu4UwpioX6klOlvJSMFvBjxfln0h6', 'user.jpg', 'member', 1, '0000-00-00 00:00:00', '2021-07-02 21:02:56', '2021-07-02 21:02:56', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
 ('60df7f2949eb5', 'Daman Huri', 'damanhuri', 'daman@gmail.com', '$2y$10$48s3.In5gdRrSuVYXHOft.k8eg7DGE3IEp/BVrTJi1TScP8WbMRHO', 'user.jpg', 'kurir', 1, '0000-00-00 00:00:00', '2021-07-02 21:04:07', '2021-07-02 21:04:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-('60df88f3f1f69', 'Dede', 'member', 'dede@gmail.com', '$2y$10$zFUP9CdeQ5Z1hsIwHYdfhOApk6Ox8ELhpRLEDyeKsz8qCjhrfOWCa', 'user.jpg', 'member', 1, '0000-00-00 00:00:00', '2021-07-02 21:45:43', '2021-07-02 21:45:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '');
+('60df88f3f1f69', 'Dede', 'member', 'dede@gmail.com', '$2y$10$zFUP9CdeQ5Z1hsIwHYdfhOApk6Ox8ELhpRLEDyeKsz8qCjhrfOWCa', 'user.jpg', 'member', 1, '0000-00-00 00:00:00', '2021-07-02 21:45:43', '2021-07-02 21:45:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
+('60e04cc096747', 'Agus', 'agus', 'agus@gmail.com', '$2y$10$y5Od3tjX8OXXi7Te66URgON9fzWXrUrKJlRANtTRcfvA7QCCtyBcK', 'user.jpg', 'admin', 1, '0000-00-00 00:00:00', '2021-07-03 11:40:48', '2021-07-03 11:40:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_token`
+--
+
+CREATE TABLE `user_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `token` varchar(128) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -373,6 +398,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `user_token`
+--
+ALTER TABLE `user_token`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -392,13 +423,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `checkout_detail`
 --
 ALTER TABLE `checkout_detail`
-  MODIFY `id_detail_trx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_detail_trx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `user_token`
+--
+ALTER TABLE `user_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -23,6 +23,7 @@
              </div>
              <div class="col-lg-9">
                  <div class="row">
+
                      <div class="col-lg-6">
                          <div class="product-pic-zoom">
                              <img class="product-big-img" src="<?= base_url('assets/img/products/' . $product['image']); ?>" alt="<?= $product['product_slug']; ?>">
@@ -50,6 +51,14 @@
                                  </p>
                                  <h4><?= "IDR " . number_format($product['price'], 0, ',', '.'); ?></h4>
                              </ul>
+                             <?php if ($this->session->flashdata('message')) : ?>
+                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                     <?= $this->session->flashdata('message'); ?>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                     </button>
+                                 </div>
+                             <?php endif; ?>
                              <div class="quantity">
                                  <div class="pro-qty">
                                      <input type="text" name="qty" value="1">

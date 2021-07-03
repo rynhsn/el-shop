@@ -13,6 +13,8 @@ class Profile extends CI_Controller
 
     private function _view($page, $data)
     {
+        $data['delivery']  = $this->checkout->getWhere('status_trx', 'Delivery')->result_array();
+
         $this->load->view('kurir/_partials/head', $data);
         $this->load->view('kurir/_partials/sidebar', $data);
         $this->load->view('kurir/_partials/navbar', $data);

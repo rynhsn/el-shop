@@ -19,6 +19,9 @@ class Transactions extends CI_Controller
 
     private function _view($page, $data)
     {
+        $data['unconfirm']  = $this->checkout->getWhere('status_trx', 'Waiting for Confirmation')->result_array();
+        $data['proccess']   = $this->checkout->getWhere('status_trx', 'In Proccess')->result_array();
+
         $this->load->view('admin/_partials/head', $data);
         $this->load->view('admin/_partials/sidebar', $data);
         $this->load->view('admin/_partials/navbar', $data);
@@ -120,8 +123,25 @@ class Transactions extends CI_Controller
     {
         if (!$param) redirect('admin/transactions');
 
+
+        $items  = $this->checkout_detail->getWhere($param);
+        $item   = count($items);
+        // var_dump($items);
+        // var_dump($item);
+        // die;
+        for ($i = 0; $i < $item; $i++) {
+            $id = $items[$i]['product_id'];
+
+            $product  = $this->db->get_where('products', ['id_product' => $id])->row_array();
+            $qty = $product['stock'] - $items[$i]['qty'];
+
+            $this->db->set('stock', $qty);
+            $this->db->where('id_product', $id);
+            $this->db->update('products');
+        }
+
         $this->db->update('checkout', ['status_trx' => 'In Proccess'], array('id_trx' => $param));
-        $this->session->set_flashdata('message', 'Berhasil, segera dikirim!');
+        $this->session->set_flashdata('message', 'Berhasil, pesanan siap dikirim!');
         redirect('admin/transactions/detail/' . $param);
     }
 

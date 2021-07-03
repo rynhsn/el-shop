@@ -23,9 +23,6 @@
             <input type="hidden" name="tgl_trx" value="<?= date('Y-m-d'); ?>">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="checkout-content">
-                        <a href="#" class="content-btn">Click Here To Login</a>
-                    </div>
                     <h4>Shipping Details</h4>
                     <div class="row">
                         <div class="col-lg-12">
@@ -79,9 +76,6 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="checkout-content">
-                        <input type="text" placeholder="Enter Your Coupon Code">
-                    </div>
                     <div class="place-order">
                         <h4>Your Order</h4>
                         <div class="order-total">

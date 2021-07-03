@@ -44,7 +44,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="<?= base_url('kurir/delivery/finish/') . $transaction['id_trx']; ?>" class="btn btn-info btn-circle btn-sm">
+                                        <a href="<?= base_url('kurir/shipping/finish/') . $transaction['id_trx']; ?>" class="btn btn-info btn-circle btn-sm">
                                             <i class="fas fa-people-carry"></i>
                                         </a>
                                     </div>

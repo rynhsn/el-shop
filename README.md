@@ -7,6 +7,8 @@ FINISH
 AUTH
 - Login
 - Logout
+- Reset password
+- Register
 
 ADMIN PAGE
 - Kelola User
@@ -41,7 +43,6 @@ KURIR
 
 MEMBER
 - Edit password
-- Tracking order
 
 VISITOR
 - Blog

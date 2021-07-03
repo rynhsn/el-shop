@@ -8,6 +8,7 @@ class Profile extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model', 'user');
+        $this->load->model('checkout_model', 'checkout');
         is_logged_in();
     }
 

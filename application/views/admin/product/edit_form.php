@@ -87,7 +87,7 @@
 
                 <div class="form-group">
                     <label for="description">Description*</label>
-                    <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" name="description" id="editor" placeholder="Product description..."><?= $product['desc_product']; ?></textarea>
+                    <textarea class="form-control <?= form_error('description') ? 'is-invalid' : '' ?>" name="description" id="description" placeholder="Product description..."><?= $product['desc_product']; ?></textarea>
                     <div class="invalid-feedback">
                         <?= form_error('description') ?>
                     </div>

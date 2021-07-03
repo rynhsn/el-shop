@@ -10,13 +10,14 @@ class Products extends CI_Controller
         $this->load->model('product_model');
         $this->load->model('image_model');
         $this->load->model('category_model');
+        $this->load->model('checkout_model');
         is_logged_in();
     }
 
     private function _view($page, $data)
     {
-        $data['unconfirm']  = $this->checkout->getWhere('status_trx', 'Waiting for Confirmation')->result_array();
-        $data['proccess']   = $this->checkout->getWhere('status_trx', 'In Proccess')->result_array();
+        $data['unconfirm']  = $this->checkout_model->getWhere('status_trx', 'Waiting for Confirmation')->result_array();
+        $data['proccess']   = $this->checkout_model->getWhere('status_trx', 'In Proccess')->result_array();
 
         $this->load->view('admin/_partials/head', $data);
         $this->load->view('admin/_partials/sidebar', $data);

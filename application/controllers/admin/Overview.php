@@ -18,8 +18,10 @@ class Overview extends CI_Controller
 
         $year       = date('Y');
         $month      = date('m');
-        $monthly    = $this->checkout->getByDate('month(tgl_trx)', $month);
-        $annual     = $this->checkout->getByDate('year(tgl_trx)', $year);
+        $day        = date('d');
+        $data['daily']      = $this->checkout->getByDate('day(tgl_trx)', $day)->row_array();
+        $data['monthly']    = $this->checkout->getByDate('month(tgl_trx)', $month)->row_array();
+        $data['annual']     = $this->checkout->getByDate('year(tgl_trx)', $year)->row_array();
 
         $data['pay']        = $this->checkout->getWhere('status_trx', 'Waiting Payment')->result_array();
         $data['unconfirm']  = $this->checkout->getWhere('status_trx', 'Waiting for Confirmation')->result_array();
@@ -28,8 +30,9 @@ class Overview extends CI_Controller
         $data['arrived']    = $this->checkout->getWhere('status_trx', 'Arrived')->result_array();
         $data['success']    = $this->checkout->getWhere('status_trx', 'Success')->result_array();
 
-        $data['monthly']    = $monthly['jumlah'];
-        $data['annual']     = $annual['jumlah'];
+        $data['daily_trx']  = $this->checkout->getByDate('day(tgl_trx)', $day)->num_rows();
+        $data['monthly_trx']  = $this->checkout->getByDate('month(tgl_trx)', $day)->num_rows();
+        $data['annual_trx']  = $this->checkout->getByDate('year(tgl_trx)', $day)->num_rows();
 
         $this->_view('overview', $data);
     }

@@ -63,7 +63,8 @@ class Auth extends CI_Controller
                 'username'  => $param[0],
                 'image'     => 'user.jpg',
                 'role'      => htmlspecialchars($role),
-                'is_active' => 0
+                'is_active' => 0,
+                'date_created' => date('d-m-Y')
             ];
 
             // Menyiapkan data token

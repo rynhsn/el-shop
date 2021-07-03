@@ -150,8 +150,10 @@ class Checkout_model extends CI_Model
         $this->db->from($this->_table);
         $this->db->where($param, $param1);
         $this->db->where('status_trx', 'Success');
-        return $this->db->get()->row_array();
+        return $this->db->get();
     }
+
+    
 
 
     private function _uploadImage()

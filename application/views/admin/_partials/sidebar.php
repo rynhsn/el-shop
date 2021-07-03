@@ -67,6 +67,20 @@
         </div>
     </li>
 
+    <li class="nav-item <?= $this->uri->segment(2) == 'reports' ? 'active' : ''; ?>">
+        <a class="nav-link <?= $this->uri->segment(2) == 'reports' ? '' : 'collapsed'; ?>" href="" data-toggle="collapse" data-target="#collapseReports" aria-expanded="<?= $this->uri->segment(2) == 'reports' ? 'true' : 'false'; ?>" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Reports</span>
+        </a>
+        <div id="collapseReports" class="collapse <?= $this->uri->segment(2) == 'reports' ? 'show' : ''; ?>" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Reports</h6>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'reports' ? 'active' : ''; ?>" href="<?= base_url('admin/reports/transactions'); ?>">Transactions</a>
+                <a class="collapse-item <?= $this->uri->segment(3) == 'logo' ? 'active' : ''; ?>" href="<?= base_url('admin/reports/products'); ?>">Products</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

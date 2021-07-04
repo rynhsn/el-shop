@@ -40,19 +40,6 @@ VISITOR
 - Shop
 - Adding cart
 
-
-------
-BELUM
-------
-
-ADMIN
-- Report Penjualan
-
-VISITOR
-- Blog
-- About
-- Contact
-
 --------
 AKUN
 --------
@@ -60,3 +47,4 @@ Email & Pwd
 - admin@el-shop.com & admin123
 - member@el-shop.com & member123
 - kurir@el-shop.com & kurir123
+- juliabahar70@gmail.com & julia123

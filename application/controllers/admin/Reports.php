@@ -7,6 +7,7 @@ class Reports extends CI_Controller
     {
         parent::__construct();
         $this->load->model('report_model', 'reports');
+        $this->load->model('product_model', 'products');
         $this->load->model('checkout_model');
         is_logged_in();
     }
@@ -50,7 +51,7 @@ class Reports extends CI_Controller
         if ($param == 'daily') {
             $data['trx'] = $this->reports->trxByDay($data['from'], $data['to']);
 
-            $html = $this->load->view('admin/report/print', $data, true);
+            $html = $this->load->view('admin/report/transaction-print', $data, true);
             $mpdf = new \Mpdf\Mpdf();
             // Write some HTML code:
             $mpdf->SetHTMLHeader('
@@ -75,7 +76,7 @@ class Reports extends CI_Controller
             // 
             $data['trx'] = $this->reports->trxByMonth($data['year'], $data['from'], $data['to']);
 
-            $html = $this->load->view('admin/report/print', $data, true);
+            $html = $this->load->view('admin/report/transaction-print', $data, true);
             $mpdf = new \Mpdf\Mpdf();
             // Write some HTML code:
             $mpdf->SetHTMLHeader('
@@ -99,7 +100,7 @@ class Reports extends CI_Controller
         } elseif ($param == 'annual') {
             $data['trx'] = $this->reports->trxByYear($data['year']);
 
-            $html = $this->load->view('admin/report/print', $data, true);
+            $html = $this->load->view('admin/report/transaction-print', $data, true);
             $mpdf = new \Mpdf\Mpdf();
             // Write some HTML code:
             $mpdf->SetHTMLHeader('

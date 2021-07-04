@@ -76,7 +76,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Reports</h6>
                 <a class="collapse-item <?= $this->uri->segment(2) == 'reports' ? 'active' : ''; ?>" href="<?= base_url('admin/reports/transactions'); ?>">Transactions</a>
-                <a class="collapse-item <?= $this->uri->segment(3) == 'logo' ? 'active' : ''; ?>" href="<?= base_url('admin/reports/products'); ?>">Products</a>
             </div>
         </div>
     </li>

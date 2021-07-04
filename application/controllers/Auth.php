@@ -57,6 +57,7 @@ class Auth extends CI_Controller
             $role       = $this->input->post('role', true);
 
             $data = [
+                'id_user'   => uniqid(),
                 'full_name' => htmlspecialchars($full_name),
                 'email'     => htmlspecialchars($email),
                 'password'  => password_hash($password, PASSWORD_DEFAULT),

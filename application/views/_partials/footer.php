@@ -22,10 +22,11 @@
             </div>
             <div class="col-lg-2 offset-lg-1">
                 <div class="footer-widget">
-                    <h5>Information</h5>
+                    <h5>Pages</h5>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="<?= base_url('about'); ?>">About Us</a></li>
+                        <li><a href="<?= base_url('shop'); ?>">Shop</a></li>
+                        <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -34,10 +35,9 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li><a href="<?= base_url('member/profile'); ?>">My Account</a></li>
+                            <li><a href="<?= base_url('member/history'); ?>">History</a></li>
+                            <li><a href="<?= base_url('cart'); ?>">Shopping Cart</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | Engine Lubricant
+                        </script> All rights reserved | <?= $site['site_name']; ?>
                     </div>
                     <div class="payment-pic">
                         <img src="img/payment-method.png" alt="">

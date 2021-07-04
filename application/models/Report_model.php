@@ -15,6 +15,7 @@ class Report_model extends CI_Model
 
 
   // ------------------------------------------------------------------------
+
   public function trxYear()
   {
     $this->db->select('YEAR(tgl_trx) AS year');

@@ -84,7 +84,6 @@ $items = $this->cart->contents();
                 <ul>
                     <li <?= $this->uri->segment(1) == '' ? 'class="active"' : ''; ?>><a href="<?= base_url(); ?>">Home</a></li>
                     <li <?= $this->uri->segment(1) == 'shop' ? 'class="active"' : ''; ?>><a href="<?= base_url('shop'); ?>">Shop</a></li>
-                    <li <?= $this->uri->segment(1) == 'blogs' ? 'class="active"' : ''; ?>><a href="<?= base_url('blogs'); ?>">Blog</a></li>
                     <li <?= $this->uri->segment(1) == 'about' ? 'class="active"' : ''; ?>><a href="<?= base_url('about'); ?>">About us</a></li>
                     <li <?= $this->uri->segment(1) == 'contact' ? 'class="active"' : ''; ?>><a href="<?= base_url('contact'); ?>">Contact</a></li>
                 </ul>

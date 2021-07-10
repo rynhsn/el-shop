@@ -50,20 +50,20 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run()) {
 
-            $full_name  = $this->input->post('full_name', true);
-            $email      = $this->input->post('email', true);
+            $full_name  = $this->input->post('full_name');
+            $email      = $this->input->post('email');
             $password   = $this->input->post('password');
             $param      = explode("@", $email);
-            $role       = $this->input->post('role', true);
+            $role       = $this->input->post('role');
 
             $data = [
                 'id_user'   => uniqid(),
-                'full_name' => htmlspecialchars($full_name),
-                'email'     => htmlspecialchars($email),
+                'full_name' => $full_name,
+                'email'     => $email,
                 'password'  => password_hash($password, PASSWORD_DEFAULT),
                 'username'  => $param[0],
                 'image'     => 'user.jpg',
-                'role'      => htmlspecialchars($role),
+                'role'      => $role,
                 'is_active' => 0,
                 'date_created' => date('d-m-Y')
             ];
